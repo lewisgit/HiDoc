@@ -1,0 +1,171 @@
+<resources>
+
+    <!-- 授权信息 -->
+    <string name="app_id">ph14Qk1ObtIShEGTAVQgSlzR</string>
+    <string name="app_key">3SpT0q80Q59zKTswXAXwW0XU</string>
+
+    <!-- 进入界面 -->
+    <string name="company_name">快乐医生</string>
+    <string name="splash_word">您身边的私人医生顾问</string>
+
+    <!-- 通用字段 -->
+    <string name="app_name">快乐医生</string>
+    <string name="action_settings">设置</string>
+    <string name="action_logout">更换帐号</string>
+    <string name="action_about_app">关于与建议</string>
+    <string name="network_error">网络错误，请检查您的网络连接</string>
+    <string name="dialog_OK">确定</string>
+    <string name="dialog_Cancel">取消</string>
+    <string name="dialog_error_title">错误</string>
+    <string name="dialog_message_title">提示</string>
+    <string name="dialog_message_success">成功</string>
+    <string name="dialog_text_wait">请等待</string>
+    <string name="myself">自己</string>
+    <!-- 登录界面 -->
+    <string name="user_name">手机号</string>
+    <string name="user_password">密&#160;&#160;&#160;&#160;码</string>
+    <string name="login_button_login">登&#160;&#160;&#160;&#160;录</string>
+    <string name="quick_register">快速注册</string>
+    <string name="quick_login">快捷登陆</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="error_login_error">登陆失败，请确认网络和用户名密码后重试</string>
+    <string name="password_is_wrong">密码错误，请重试</string>
+    <string name="account_not_exist">账号不存在，请重试</string>
+    <string name="login_frequency_high">登陆失败次数过多，请稍后尝试</string>
+
+    <!-- 重置界面 -->
+    <string name="forget_password_hint">输入手机号</string>
+    <string name="forget_password_send_sns">已发送验证码，注意查收短信</string>
+    <string name="forget_password_sns_error">短信发送错误，请确认您的手机号</string>
+    <string name="click_to_send_sns">重置密码</string>
+    <string name="get_verify_code">获取验证码</string>
+    <string name="forget_password_password_hint">输入新密码</string>
+    <string name="forget_password_verifycode_hint">输入验证码</string>
+    <string name="reset_success">重置成功，即将返回登录界面</string>
+    <string name="reset_wrong_verify">验证码错误，请检查后再输入</string>
+
+    <!-- 注册界面1 -->
+    <string name="error_register_password_null">密码不可为空</string>
+    <string name="error_register_user_name_null">手机号不可为空</string>
+    <string name="error_register_user_name_repeat">手机号已被注册，请更换手机号</string>
+    <string name="register_button">立即注册</string>
+    <string name="success_register_success">注册成功</string>
+    <string name="error_register_frequency_high">您的号码注册过于频繁，请稍后再试</string>
+
+    <!-- 注册界面2 -->
+    <string name="input_verifiedcode">输入收到的验证码</string>
+    <string name="verify_code">验证手机号</string>
+    <string name="get_code">重新获取</string>
+    <string name="verifySucceed">验证成功</string>
+    <string name="verifyFailed">验证失败，请重新输入</string>
+    <string name="back_register">返回</string>
+
+    <!--应用内界面-->
+
+    <!--我的页面-->
+    <string name="my_query">我的提问</string>
+    <string name="my_follow_doctors">关注的医生</string>
+    <string name="my_settings">设置</string>
+    <string name="my_nickname">昵称</string>
+    <string name="my_phone">手机号</string>
+    <string name="my_sex">性别</string>
+    <string name="my_age">年龄</string>
+    <string name="my_occuption">职业</string>
+    <string name="photo_error">头像上传失败，请重试</string>
+    <string name="photo_success">头像上传成功</string>
+    <string name="nickname_success">昵称修改成功</string>
+    <string name="phone_success">手机号修改成功</string>
+    <string name="age_success">年龄修改成功</string>
+    <string name="sex_success">性别修改成功</string>
+    <string name="occuption_success">职业修改成功</string>
+    <!--设置-->
+    <string name="clear_storage">清除缓存</string>
+    <string name="notification">消息提醒</string>
+    <string name="update">检测更新</string>
+    <string name="aboutus">关于我们</string>
+
+    <!--聊天-->
+    <string name="title_activity_main">聊天</string>
+    <!--评价-->
+    <string name="rate_title">评价医生服务</string>
+    <string name="input_your_feedback">输入您对此次咨询服务的评价</string>
+    <string name="post_feedback">发布评价</string>
+    <string name="pay_attetion">注意</string>
+    <string name="feedback_tip_1">·您的评价将会影响其他患者对该医生的选择，请客观公正书写您的评价</string>
+    <string name="feedback_tip_2">·您的评价将会是匿名的。</string>
+    <string name="feedback_success">评价成功，谢谢您的参与</string>
+
+    <!--咨询部分-->
+    <string name="women_doc">妇科</string>
+    <string name="child_doc">儿科</string>
+    <string name="ask_price">按次咨询：</string>
+    <string name="personal_price">按周咨询：</string>
+    <string name="price">元/次</string>
+
+    <!--圈子-->
+    <string name="status_chat">发起会话</string>
+    <string name="status_send">发送</string>
+    <string name="status_menu_send">说两句</string>
+    <string name="status_followers">粉丝</string>
+    <string name="status_following">关注</string>
+    <string name="status_follow">关注</string>
+    <string name="status_none_follow_desc">无</string>
+    <string name="status_addImage">添加图片</string>
+    <string name="status_cancelImage">取消图片</string>
+    <string name="status_followStatus">关注状态</string>
+    <string name="status_deleteStatusTips">要删除这条状态吗</string>
+    <string name="status_mutual_follow">互相关注</string>
+    <string name="status_follower_desc">Ta关注了你</string>
+    <string name="status_following_desc">已关注</string>
+    <string name="status_cancelFollow">取消关注</string>
+
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+
+    <string name="listEmptyHint">无数据</string>
+    <string name="hardLoading">努力加载中&#8230;</string>
+    <string name="noMore">没有更多了</string>
+    <string name="ok">好的</string>
+    <string name="cancel">取消</string>
+    <string name="find_people">找人</string>
+    <string name="status_list_title">广场</string>
+    <string name="person_activity_title">个人主页</string>
+    <string name="load_more">查看更多&#8230;</string>
+
+    <!--DOC PAGE-->
+    <string name="consult_once">图文咨询</string>
+    <string name="consult_once_dsp">通过图片、文字、语音进行咨询</string>
+    <string name="consult_week">私人服务</string>
+    <string name="consult_week_dsp">不限次数与医生进行图文咨询</string>
+    <string name="yuan_sign">¥</string>
+    <string name="once_week">/周</string>
+    <string name="once">/次</string>
+    <string name="consult_service">咨询服务</string>
+    <string name="pay_to_doc">向医生</string>
+    <string name="pay">付款</string>
+    <string name="follow_success">关注成功</string>
+    <string name="follow_fail">关注失败</string>
+    <!--pay for consulting-->
+    <string name="pay_success">支付成功</string>
+    <string name="pay_fail">支付失败</string>
+    <string name="need_confirmation">支付结果确认中</string>
+
+    <string name="follow">+关注</string>
+    <string name="unfollow">取消关注</string>
+    <string name="unfollow_success">取关成功</string>
+    <string name="unfollow_fail">取关失败</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="send_circle">圈子发送</string>
+
+    <string name="conv_end">会话已结束，请续费后继续咨询！</string>
+    <string name="chat_now">立即咨询</string>
+    <string name="rem_30">咨询剩余时间不足30分钟，请及时充值！</string>
+    <string name="rem_5">咨询剩余时间不足5分钟，请及时充值！</string>
+    <string name="rem_1">咨询剩余时间不足1分钟，请及时充值！</string>
+    <string name="pay_now">立即付款</string>
+    <string name="wait_confirm">若您已付款，等待1分钟后再次进入本次咨询！</string>
+    <string name="fee_not_set">该医生未设置其咨询费用</string>
+    <string name="send_success">发送成功</string>
+    <string name="sending">正在发送，请稍后&#8230;</string>
+</resources>
