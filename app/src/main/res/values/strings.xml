@@ -168,4 +168,11 @@
     <string name="fee_not_set">该医生未设置其咨询费用</string>
     <string name="send_success">发送成功</string>
     <string name="sending">正在发送，请稍后&#8230;</string>
+
+    <!--Login Phase-->
+    <string name="invalid_user">用户不合法</string>
+    <string name="not_phone_verify">未验证手机号码</string>
+    <string name="is_doc_account">请不要使用医生账号登录</string>
+    <string name="empty_username">用户名不能为空</string>
+    <string name="empty_pwd">密码不能为空</string>
 </resources>
