@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.happydoc.lewis.myapplication.atts.timerCount;
+import com.happydoc.lewis.myapplication.Model.PhoneVerifyModel;
+import com.happydoc.lewis.myapplication.Presenter.PhoneVerifyPresenter;
+import com.happydoc.lewis.myapplication.View.PhoneVerifyView;
+import com.happydoc.lewis.myapplication.atts.TimerCount;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -15,24 +18,12 @@ import butterknife.OnClick;
  * Created by Lewis on 2016/7/12.
  */
 public class PhoneVerifyActivity extends AppCompatActivity{
-
-    @Bind(R.id.get_code_button)
-    Button getCodeButton;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone);
-        ButterKnife.bind(this);
-        timerCount timer=new timerCount(getCodeButton);
-        timer.start();
+        PhoneVerifyView view=new PhoneVerifyView(this);
+        PhoneVerifyModel model=new PhoneVerifyModel();
+        new PhoneVerifyPresenter(view,model);
     }
-    @OnClick(R.id.get_code_button)
-    public void onGetCodeClick(View view){
-        timerCount timer=new timerCount((Button) view);
-        timer.start();
-    }
-
-
-
 }

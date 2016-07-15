@@ -43,7 +43,7 @@
     <string name="forget_password_verifycode_hint">输入验证码</string>
     <string name="reset_success">重置成功，即将返回登录界面</string>
     <string name="reset_wrong_verify">验证码错误，请检查后再输入</string>
-
+    <string name="complete_info_pls">请完整填写信息</string>
     <!-- 注册界面1 -->
     <string name="error_register_password_null">密码不可为空</string>
     <string name="error_register_user_name_null">手机号不可为空</string>
@@ -51,7 +51,7 @@
     <string name="register_button">立即注册</string>
     <string name="success_register_success">注册成功</string>
     <string name="error_register_frequency_high">您的号码注册过于频繁，请稍后再试</string>
-
+    <string name="invalid_phone">无效的手机号</string>
     <!-- 注册界面2 -->
     <string name="input_verifiedcode">输入收到的验证码</string>
     <string name="verify_code">验证手机号</string>
@@ -59,7 +59,10 @@
     <string name="verifySucceed">验证成功</string>
     <string name="verifyFailed">验证失败，请重新输入</string>
     <string name="back_register">返回</string>
-
+    <string name="phone_num_get_fail">手机号码获取失败</string>
+    <string name="verify_request_sent">请注意查收您的短信</string>
+    <string name="verify_request_fail">发送失败，请稍后重试</string>
+    <string name="send_verify_sns">发送短信</string>
     <!--应用内界面-->
 
     <!--我的页面-->

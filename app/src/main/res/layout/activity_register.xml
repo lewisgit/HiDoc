@@ -6,11 +6,22 @@
     android:layout_height="match_parent"
     android:weightSum="5"
     android:padding="20dp"
+    android:background="@color/white"
     tools:context=".registerActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"></LinearLayout>
+        android:layout_weight="0.4"
+        android:gravity="center_vertical">
+        <TextView
+            android:id="@+id/back_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/back_register"
+            android:textSize="22sp"
+            android:textColor="@drawable/doc_blue"/>
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -61,6 +72,7 @@
                 />
 
             <EditText
+                android:id="@+id/register_username"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
@@ -99,6 +111,7 @@
                 />
 
             <EditText
+                android:id="@+id/register_pwd"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
@@ -120,6 +133,7 @@
         "></LinearLayout>
     <!-- 注册 -->
     <Button
+        android:id="@+id/register_rightaway"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"

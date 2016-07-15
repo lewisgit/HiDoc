@@ -7,7 +7,7 @@
     android:background="@color/white"
     android:weightSum="5">
     <TextView
-        android:id="@+id/back_register"
+        android:id="@+id/back_phone"
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:textSize="18sp"
-            android:text="60秒"
+            android:text="@string/send_verify_sns"
             android:layout_weight="1.5"
             android:layout_marginLeft="5dp"
             android:textColor="@color/white"

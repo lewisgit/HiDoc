@@ -21,8 +21,10 @@ public class StartView extends MotherView{
         activity.startActivity(intent);
         activity.finish();
     }
-    public void phoneVerifyNeeded(){
+    public void phoneVerifyNeeded(String num){
         Intent intent=new Intent(activity,PhoneVerifyActivity.class);
+        intent.putExtra("Phone",num);
+        intent.putExtra("afterReg",false);
         activity.startActivity(intent);
         activity.finish();
     }

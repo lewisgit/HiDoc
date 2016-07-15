@@ -10,6 +10,7 @@ import com.happydoc.lewis.myapplication.Model.LoginModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.StartView;
 import com.happydoc.lewis.myapplication.account.AccountCode;
+import com.happydoc.lewis.myapplication.account.CustomUserProvider;
 import com.happydoc.lewis.myapplication.account.UserValidation;
 
 /**
@@ -25,6 +26,7 @@ public class StartPresenter {
         initialize();
     }
     public void initialize(){
+        //CustomUserProvider.getInstance().setCurrentUser(loginModel.getCurrentUser());
         currentUser=loginModel.getCurrentUser();
         if(currentUser!=null){
             loginModel.getUpdatedUserData(currentUser, new GetCallback<AVObject>() {
@@ -33,11 +35,12 @@ public class StartPresenter {
                     if (e == null) {
                         loginVerify((AVUser) avObject);
                     } else {
-                        Log.d("error", e.getMessage());
+                        Log.d("Current User Sync Error", e.getMessage());
                     }
                 }
             });
         }else{
+            Log.d("Login Error", "Null Current User");
             startView.loginNeeded();
         }
     }
@@ -65,7 +68,7 @@ public class StartPresenter {
                 break;
             case isUsernotVerify:
                 startView.showMsg(R.string.not_phone_verify);
-                startView.phoneVerifyNeeded();
+                startView.phoneVerifyNeeded(currentUser.getMobilePhoneNumber());
                 break;
         }
     }

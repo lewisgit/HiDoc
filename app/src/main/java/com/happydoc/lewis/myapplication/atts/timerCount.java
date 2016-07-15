@@ -6,7 +6,7 @@ import com.happydoc.lewis.myapplication.R;
 /**
  * Created by Lewis on 2016/7/12.
  */
-public class timerCount extends CountDownTimer {
+public class TimerCount extends CountDownTimer {
     public static final int TIME_COUNT = 61000;//时间防止从119s开始显示（以倒计时120s为例子）
     private TextView btn;
     private int endStrRid;
@@ -20,7 +20,7 @@ public class timerCount extends CountDownTimer {
 
      * 参数 endStrRid   倒计时结束后，按钮对应显示的文字
      */
-    public timerCount (TextView btn) {
+    public TimerCount(TextView btn) {
         super(TIME_COUNT, 1000);
         this.btn = btn;
         this.endStrRid = R.string.get_code;
