@@ -6,6 +6,7 @@
     <drawable name="doc_blue">#83DCFF</drawable>
     <drawable name="doc_white">#FFFFFF</drawable>
     <drawable name="doc_gray">#7c7b78</drawable>
+    <color name="doc_blue">#83DCFF</color>
     <color name="doc_gray">#7c7b78</color>
     <color name="border_clo">#ccc</color>
     <color name="text_clo">#333</color>
@@ -23,4 +24,5 @@
     <color name="transparent">#00000000</color>
     <color name="bg_no_photo">#EEEEEE</color>
     <color name="orange_red">#fb6d03</color>
+    <color name="tab_bottom">#E7EBE9</color>
 </resources>

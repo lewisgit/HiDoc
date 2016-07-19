@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <include layout="@layout/top_bar"
+        android:id="@+id/top_bar"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        >
+    </include>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_bar"
+        android:layout_above="@+id/tab_bottom"
+        android:id="@+id/fragment_region"
+        >
+    </FrameLayout>
+<include
+    layout="@layout/tab_bottom"
+    android:id="@+id/tab_bottom"
+    android:layout_height="60dp"
+    android:layout_width="match_parent"
+    android:layout_alignParentBottom="true">
 
-</LinearLayout>
+</include>
+
+</RelativeLayout>

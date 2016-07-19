@@ -178,4 +178,10 @@
     <string name="is_doc_account">请不要使用医生账号登录</string>
     <string name="empty_username">用户名不能为空</string>
     <string name="empty_pwd">密码不能为空</string>
+
+    <string name="doclist_fragment">doclistfragment</string>
+    <string name="docpage_fragment">docpagefragment</string>
+
+    <string name="doclist_btn_script">在线咨询</string>
+    <string name="video_btn_script">母婴课堂</string>
 </resources>

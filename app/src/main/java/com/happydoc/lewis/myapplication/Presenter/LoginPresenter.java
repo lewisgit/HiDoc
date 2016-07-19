@@ -45,7 +45,7 @@ public class LoginPresenter {
                 loginView.forgetPwd();
             }
         });
-        //---------------login btn setting----------------------//
+        //---------------login btn setting---------------------//
         loginView.whenBtnOnClick(loginView.getView(R.id.btn_login), new EventListener<LoginInfo>() {
             @Override
             public void onDispatch(LoginInfo data) {

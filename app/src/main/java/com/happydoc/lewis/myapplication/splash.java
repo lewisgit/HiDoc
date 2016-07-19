@@ -12,6 +12,9 @@ import com.happydoc.lewis.myapplication.Presenter.LoginPresenter;
 import com.happydoc.lewis.myapplication.Presenter.StartPresenter;
 import com.happydoc.lewis.myapplication.View.LoginView;
 import com.happydoc.lewis.myapplication.View.StartView;
+import com.nostra13.universalimageloader.core.ImageLoader;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by Lewis on 2016/7/12.
@@ -27,7 +30,8 @@ public class splash extends AppCompatActivity {
         final StartView view=new StartView(this);
         final LoginModel model=new LoginModel();
 
-
+       // CircleImageView circleImageView=(CircleImageView) findViewById(R.id.splash_logo);
+       // ImageLoader.getInstance().displayImage("http://www.jianyumei.com.cn/ueditor/net/upload/2015-01-15/e9af161b-133d-4017-989a-624e6771e158.jpg",circleImageView);
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
