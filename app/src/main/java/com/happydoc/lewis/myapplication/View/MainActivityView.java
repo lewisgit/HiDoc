@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.happydoc.lewis.myapplication.App;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
+import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
 import com.happydoc.lewis.myapplication.fragment.DocListFragment;
 import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
 
@@ -30,6 +31,11 @@ public class MainActivityView extends MotherView implements ActivityView{
     public FragmentInfo currentFragmentInfo;
     public int fragmentRegionId;
     public EventBus eventBus;
+
+    //View
+    public ImageView sendCircle;
+
+
     public HashMap<String,FragmentInfo> fragmentList=new HashMap<>();
     public MainActivityView(AppCompatActivity activity){
         super(activity);
@@ -65,6 +71,7 @@ public class MainActivityView extends MotherView implements ActivityView{
             currentFragmentInfo=fragmentInfo;
         }
     }
+    //set btn view of bottom bar
     public void setBtn(ImageView view, int resId, TextView textView,int color)
     {
         view.setImageResource(resId);
@@ -85,6 +92,14 @@ public class MainActivityView extends MotherView implements ActivityView{
 
     public void setBtnOnClickListener(){
 
+        sendCircle=(ImageView) getView(R.id.send_circle_btn);
+        sendCircle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventBus.post(new StartSendCircleEvent());
+            }
+        });
+
         TextView doclistBtnText=(TextView) activity.findViewById(R.id.doclist_btn_text);
         ImageView doclistBtn=(ImageView) activity.findViewById(R.id.docList_btn);
         View.OnClickListener listener1=new View.OnClickListener() {
@@ -104,5 +119,16 @@ public class MainActivityView extends MotherView implements ActivityView{
                 showMsg("testBtn!");}};
         videoBtn.setOnClickListener(listener2);
         videoBtnText.setOnClickListener(listener2);
+
+        TextView circleBtnText=(TextView) activity.findViewById(R.id.circle_btn_text);
+        ImageView circleBtn=(ImageView) activity.findViewById(R.id.circle_btn);
+        View.OnClickListener listener3=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventBus.post(new ShowFragmentEvent(R.string.circle_fragment));
+                //showMsg("testBtn!");
+                }};
+        circleBtn.setOnClickListener(listener3);
+        circleBtnText.setOnClickListener(listener3);
     }
 }

@@ -1,14 +1,18 @@
 package com.happydoc.lewis.myapplication.Presenter;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.happydoc.lewis.myapplication.CircleSendActivity;
 import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.Model.MainModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.MainActivityView;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
+import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
+import com.happydoc.lewis.myapplication.fragment.CircleFragment;
 import com.happydoc.lewis.myapplication.fragment.DocListFragment;
 import com.happydoc.lewis.myapplication.fragment.DocPageFragment;
 import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
@@ -64,10 +68,26 @@ public class MainPresenter {
         fragmentInfo2.btnImg=(ImageView)view.getView(R.id.video_btn);
         fragmentInfo2.btnText=(TextView) view.getView(R.id.video_btn_text);
         fragmentInfos.add(fragmentInfo2);
+
+        FragmentInfo fragmentInfo3=new FragmentInfo();
+        fragmentInfo3.fragment=new CircleFragment();
+        fragmentInfo3.fragmentId=view.activity.getString(R.string.circle_fragment);
+        // fragmentInfo1.lightBtn=R.id.docList_btn;
+        fragmentInfo3.pressRes=R.drawable.circle_press;
+        fragmentInfo3.releaseRes=R.drawable.circle;
+        fragmentInfo3.btnImg=(ImageView)view.getView(R.id.circle_btn);
+        fragmentInfo3.btnText=(TextView) view.getView(R.id.circle_btn_text);
+        fragmentInfos.add(fragmentInfo3);
     }
 
     @Subscribe
     public void onEvent(ShowFragmentEvent event){
         view.showFragment(event.fragmentId);
+    }
+
+    @Subscribe
+    public void onEvent(StartSendCircleEvent event){
+        Intent intent=new Intent(view.activity, CircleSendActivity.class);
+        view.activity.startActivity(intent);
     }
 }

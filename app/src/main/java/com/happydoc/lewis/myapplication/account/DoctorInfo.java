@@ -2,10 +2,12 @@ package com.happydoc.lewis.myapplication.account;
 
 import com.avos.avoscloud.AVObject;
 
+import java.io.Serializable;
+
 /**
  * Created by Lewis on 2016/7/18.
  */
-public class DoctorInfo {
+public class DoctorInfo implements Serializable{
     public String name;
     public String avatarUrl;
     public String docTitle;
