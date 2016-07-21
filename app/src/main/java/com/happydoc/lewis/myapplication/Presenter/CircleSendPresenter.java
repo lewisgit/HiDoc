@@ -55,9 +55,11 @@ public class CircleSendPresenter {
                 .start(event.activity,REQUEST_CODE);
     }
 
-    @Subscribe void onEvent(SendCircleEvent event){
+    @Subscribe
+    public void onEvent(SendCircleEvent event){
         new Thread(runnable).start();
     }
+
     public void showSelectedImgs(ArrayList<String> arrayList){
         model.setSelectedImgs(arrayList);
        // view.adapterGrid.clear();

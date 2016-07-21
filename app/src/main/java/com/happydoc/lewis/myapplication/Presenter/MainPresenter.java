@@ -37,6 +37,7 @@ public class MainPresenter {
         initialize();
     }
     public void initialize(){
+        view.setView();
         view.setEventBus(new EventBus());
         view.getEventBus().register(this);
         view.setBtnOnClickListener();
@@ -54,17 +55,20 @@ public class MainPresenter {
         fragmentInfo1.fragment=new DocListFragment();
         fragmentInfo1.fragmentId=view.activity.getString(R.string.doclist_fragment);
        // fragmentInfo1.lightBtn=R.id.docList_btn;
+        fragmentInfo1.fragmentTitle=view.getString(R.string.doclist_btn_script);
         fragmentInfo1.pressRes=R.drawable.chat_press;
         fragmentInfo1.releaseRes=R.drawable.chat;
         fragmentInfo1.btnImg=(ImageView)view.getView(R.id.docList_btn);
         fragmentInfo1.btnText=(TextView) view.getView(R.id.doclist_btn_text);
         fragmentInfos.add(fragmentInfo1);
+
         FragmentInfo fragmentInfo2=new FragmentInfo();
         fragmentInfo2.fragment=new DocPageFragment();
         fragmentInfo2.fragmentId=view.activity.getString(R.string.docpage_fragment);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         fragmentInfo2.pressRes=R.drawable.video_press;
         fragmentInfo2.releaseRes=R.drawable.video;
+        fragmentInfo2.fragmentTitle=view.getString(R.string.video_btn_script);
         fragmentInfo2.btnImg=(ImageView)view.getView(R.id.video_btn);
         fragmentInfo2.btnText=(TextView) view.getView(R.id.video_btn_text);
         fragmentInfos.add(fragmentInfo2);
@@ -72,6 +76,7 @@ public class MainPresenter {
         FragmentInfo fragmentInfo3=new FragmentInfo();
         fragmentInfo3.fragment=new CircleFragment();
         fragmentInfo3.fragmentId=view.activity.getString(R.string.circle_fragment);
+        fragmentInfo3.fragmentTitle=view.getString(R.string.circle_btn_scriptt);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         fragmentInfo3.pressRes=R.drawable.circle_press;
         fragmentInfo3.releaseRes=R.drawable.circle;

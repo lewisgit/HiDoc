@@ -23,7 +23,7 @@ public interface CircleContract {
     }
 
     interface Presenter extends BasePresenter{
-        void loadData(int loadType);
+        void loadData(int loadType,int skipNum);
         void deleteCircle(final String circleId);
         void addFavort(final int circlePosition);
         void deleteFavort(final int circlePosition, final String favortId);

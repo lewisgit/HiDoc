@@ -73,6 +73,12 @@ public class CircleFragment extends Fragment implements CircleContract.View{
         presenter = new CirclePresenter(this);
         initView(myView);
 
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                presenter.loadData(TYPE_PULLREFRESH,0);
+            }
+        },100);
         //presenter.loadData(TYPE_UPLOADREFRESH);
         return myView;
     }
@@ -107,13 +113,13 @@ public class CircleFragment extends Fragment implements CircleContract.View{
         recyclerView.setRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
+                new Handler().post(new Runnable() {
                     @Override
                     public void run() {
-                        presenter.loadData(TYPE_PULLREFRESH);
+                        presenter.loadData(TYPE_PULLREFRESH,0);
                         recyclerView.setRefreshing(false);
                     }
-                }, 2000);
+                });
             }
         });
 
@@ -300,7 +306,7 @@ public class CircleFragment extends Fragment implements CircleContract.View{
         }
         circleAdapter.notifyDataSetChanged();
 
-/*        if(circleAdapter.getDatas().size()<45 + CircleAdapter.HEADVIEW_SIZE){
+        if(circleAdapter.getDatas().size()<45 + CircleAdapter.HEADVIEW_SIZE){
             recyclerView.setupMoreListener(new OnMoreListener() {
                 @Override
                 public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
@@ -308,7 +314,7 @@ public class CircleFragment extends Fragment implements CircleContract.View{
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            presenter.loadData(TYPE_UPLOADREFRESH);
+                            presenter.loadData(TYPE_UPLOADREFRESH,circleAdapter.getDatas().size());
                         }
                     }, 2000);
 
@@ -316,7 +322,7 @@ public class CircleFragment extends Fragment implements CircleContract.View{
             }, 1);
         }else{
             recyclerView.removeMoreListener();
-        }*/
+        }
 
     }
 
@@ -389,5 +395,11 @@ public class CircleFragment extends Fragment implements CircleContract.View{
     }
     private void initUploadDialog() {
         uploadDialog = new UpLoadDialog(getActivity());
+    }
+
+
+
+    public SuperRecyclerView getRecyclerView(){
+        return recyclerView;
     }
 }

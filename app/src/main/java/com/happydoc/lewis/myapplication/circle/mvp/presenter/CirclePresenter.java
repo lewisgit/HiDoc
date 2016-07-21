@@ -13,6 +13,7 @@ import com.happydoc.lewis.myapplication.circle.mvp.modle.CircleModel;
 import com.happydoc.lewis.myapplication.circle.listener.IDataRequestListener;
 import com.happydoc.lewis.myapplication.circle.utils.DatasUtil;
 import com.happydoc.lewis.myapplication.event.MyCallBack;
+import com.happydoc.lewis.myapplication.fragment.CircleFragment;
 
 import java.util.List;
 
@@ -34,14 +35,19 @@ public class CirclePresenter implements CircleContract.Presenter{
 		this.view = view;
 	}
 
-	public void loadData(final int loadType){
+	public void loadData(final int loadType,int skipNum){
 
         //List<CircleItem> datas = DatasUtil.createCircleDatas();
-		docCircleModel.getCircleData(10, loadType, new MyCallBack<List<CircleItem>>() {
+		docCircleModel.getCircleData(skipNum, loadType, new MyCallBack<List<CircleItem>>() {
 			@Override
 			public void done(List<CircleItem> data) {
 				if(view!=null){
-				view.update2loadData(loadType, data);}
+				view.update2loadData(loadType, data);
+					if(data.size()==0){
+						CircleFragment circleFragment=(CircleFragment)view;
+						circleFragment.getRecyclerView().hideMoreProgress();
+					}
+				}
 }	});
 
 	}

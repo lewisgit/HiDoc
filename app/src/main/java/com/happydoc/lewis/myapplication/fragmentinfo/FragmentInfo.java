@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class FragmentInfo {
     public Fragment fragment;
     public String fragmentId;
+    public String fragmentTitle;
     public int lightBtn;
     public int pressRes;
     public int releaseRes;

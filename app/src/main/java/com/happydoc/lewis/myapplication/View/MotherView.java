@@ -21,4 +21,6 @@ public class MotherView {
     public View getView(int id) {
         return activity.findViewById(id);
     }
+    public String getString(int id){if(activity!=null) return activity.getString(id);
+    else return "";}
 }

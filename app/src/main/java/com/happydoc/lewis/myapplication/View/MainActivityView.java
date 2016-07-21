@@ -31,7 +31,7 @@ public class MainActivityView extends MotherView implements ActivityView{
     public FragmentInfo currentFragmentInfo;
     public int fragmentRegionId;
     public EventBus eventBus;
-
+    public TextView titleView;
     //View
     public ImageView sendCircle;
 
@@ -61,7 +61,10 @@ public class MainActivityView extends MotherView implements ActivityView{
                 if(fragmentInfo.btnImg!=null)
                     setBtn(fragmentInfo.btnImg,fragmentInfo.pressRes,fragmentInfo.btnText,R.color.doc_blue);
                 if(currentFragmentInfo.btnImg!=null)
-                    setBtn(currentFragmentInfo.btnImg,currentFragmentInfo.releaseRes,currentFragmentInfo.btnText,R.color.doc_gray);
+                    setBtn(currentFragmentInfo.btnImg, currentFragmentInfo.releaseRes, currentFragmentInfo.btnText, R.color.doc_gray);
+
+                //Set Fragment Title
+
             }else{
                 fragmentTransaction.add(fragmentRegionId,fragment).commit();
                 if(fragmentInfo.btnImg!=null)
@@ -69,6 +72,7 @@ public class MainActivityView extends MotherView implements ActivityView{
             }
             currentFragment=fragment;
             currentFragmentInfo=fragmentInfo;
+            if(titleView!=null) titleView.setText(fragmentInfo.fragmentTitle);
         }
     }
     //set btn view of bottom bar
@@ -92,6 +96,7 @@ public class MainActivityView extends MotherView implements ActivityView{
 
     public void setBtnOnClickListener(){
 
+
         sendCircle=(ImageView) getView(R.id.send_circle_btn);
         sendCircle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,8 +112,9 @@ public class MainActivityView extends MotherView implements ActivityView{
             public void onClick(View v) {
                 eventBus.post(new ShowFragmentEvent(R.string.doclist_fragment));
                 showMsg("testBtn!");}};
+        if(doclistBtn!=null && doclistBtnText!=null){
         doclistBtn.setOnClickListener(listener1);
-        doclistBtnText.setOnClickListener(listener1);
+        doclistBtnText.setOnClickListener(listener1);}
 
         TextView videoBtnText=(TextView) activity.findViewById(R.id.video_btn_text);
         ImageView videoBtn=(ImageView) activity.findViewById(R.id.video_btn);
@@ -117,8 +123,9 @@ public class MainActivityView extends MotherView implements ActivityView{
             public void onClick(View v) {
                 eventBus.post(new ShowFragmentEvent(R.string.docpage_fragment));
                 showMsg("testBtn!");}};
+        if(videoBtnText!=null && videoBtn!=null){
         videoBtn.setOnClickListener(listener2);
-        videoBtnText.setOnClickListener(listener2);
+        videoBtnText.setOnClickListener(listener2);}
 
         TextView circleBtnText=(TextView) activity.findViewById(R.id.circle_btn_text);
         ImageView circleBtn=(ImageView) activity.findViewById(R.id.circle_btn);
@@ -128,7 +135,11 @@ public class MainActivityView extends MotherView implements ActivityView{
                 eventBus.post(new ShowFragmentEvent(R.string.circle_fragment));
                 //showMsg("testBtn!");
                 }};
+        if(circleBtnText!=null && circleBtn!=null){
         circleBtn.setOnClickListener(listener3);
-        circleBtnText.setOnClickListener(listener3);
+        circleBtnText.setOnClickListener(listener3);}
+    }
+    public void setView(){
+        titleView=(TextView)getView(R.id.tobbar_script);
     }
 }

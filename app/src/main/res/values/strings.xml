@@ -185,7 +185,9 @@
     <string name="doclist_btn_script">在线咨询</string>
     <string name="video_btn_script">母婴课堂</string>
     <string name="circle_btn_scriptt">圈子</string>
+    <string name="me_btn_script">我</string>
 
     <string name="send_circle_fail">发送失败</string>
     <string name="send_circle_success">发送成功</string>
+
 </resources>

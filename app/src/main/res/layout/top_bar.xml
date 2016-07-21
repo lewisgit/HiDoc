@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="7"
+    android:padding="5dp"
     android:background="@drawable/doc_blue">
+    <ImageView
+        android:visibility="invisible"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:src="@drawable/chat_common_base_header_back_btn"/>
+    <TextView
+        android:id="@+id/tobbar_script"
+        android:visibility="visible"
+        android:gravity="center"
+        android:layout_weight="5"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/doclist_btn_script"
+        android:textSize="22sp"
+        android:textColor="@color/white"/>
 <ImageView
     android:id="@+id/send_circle_btn"
-    android:layout_width="wrap_content"
+    android:layout_width="0dp"
     android:layout_height="match_parent"
-    android:layout_alignParentEnd="true"
-    android:layout_alignParentRight="true"
+   android:layout_weight="1"
     android:src="@android:drawable/ic_menu_camera"/>
-</RelativeLayout>
+</LinearLayout>
