@@ -24,10 +24,10 @@ public interface CircleContract {
 
     interface Presenter extends BasePresenter{
         void loadData(int loadType,int skipNum);
-        void deleteCircle(final String circleId);
-        void addFavort(final int circlePosition);
-        void deleteFavort(final int circlePosition, final String favortId);
-        void deleteComment(final int circlePosition, final String commentId);
+        void deleteCircle(final String circleId,CircleItem circleItem);
+        void addFavort(final int circlePosition,CircleItem item);
+        void deleteFavort(final int circlePosition, final String favortId,CircleItem item);
+        void deleteComment(final int circlePosition, final String commentId,CommentItem commentItem,CircleItem circleItem);
 
     }
 }

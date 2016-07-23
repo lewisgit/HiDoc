@@ -157,7 +157,7 @@ public class CircleFragment extends Fragment implements CircleContract.View{
                         Toast.makeText(getActivity(), "评论内容不能为空...", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    presenter.addComment(content, commentConfig);
+                    presenter.addComment(content, commentConfig,(CircleItem) circleAdapter.getDatas().get(commentConfig.circlePosition));
                 }
                 updateEditTextBodyVisible(View.GONE, null);
             }
@@ -401,5 +401,10 @@ public class CircleFragment extends Fragment implements CircleContract.View{
 
     public SuperRecyclerView getRecyclerView(){
         return recyclerView;
+    }
+
+
+    public void showMsg(int stringId){
+        Toast.makeText(getActivity(),getString(stringId),Toast.LENGTH_SHORT).show();
     }
 }

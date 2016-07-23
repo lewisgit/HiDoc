@@ -4,6 +4,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.happydoc.lewis.myapplication.Model.DocCircleModel;
+import com.happydoc.lewis.myapplication.R;
+import com.happydoc.lewis.myapplication.circle.adapter.CircleAdapter;
 import com.happydoc.lewis.myapplication.circle.bean.CircleItem;
 import com.happydoc.lewis.myapplication.circle.bean.CommentConfig;
 import com.happydoc.lewis.myapplication.circle.bean.CommentItem;
@@ -29,12 +31,16 @@ public class CirclePresenter implements CircleContract.Presenter{
 	private CircleModel mCircleModel;
 	private CircleContract.View view;
 	private DocCircleModel docCircleModel;
+	private CircleFragment circleFragment;
+	//private CircleAdapter circleAdapter;
 	public CirclePresenter(CircleContract.View view){
 		mCircleModel = new CircleModel();
 		docCircleModel=new DocCircleModel();
+		circleFragment=(CircleFragment) view;
 		this.view = view;
 	}
-
+	//public void setCircleAdapter(CircleAdapter circleAdapter){this.circleAdapter=circleAdapter;}
+	//public CircleAdapter getCircleAdapter(){return this.circleAdapter;}
 	public void loadData(final int loadType,int skipNum){
 
         //List<CircleItem> datas = DatasUtil.createCircleDatas();
@@ -61,12 +67,16 @@ public class CirclePresenter implements CircleContract.Presenter{
 	* @return void    返回类型 
 	* @throws
 	 */
-	public void deleteCircle(final String circleId){
-		mCircleModel.deleteCircle(new IDataRequestListener() {
-
+	public void deleteCircle(final String circleId,CircleItem circleItem){
+		docCircleModel.deleteCircle(circleItem, new MyCallBack<String>() {
 			@Override
-			public void loadSuccess(Object object) {
-				view.update2DeleteCircle(circleId);
+			public void done(String data) {
+				if(data==null){
+					circleFragment.showMsg(R.string.delete_circle_fail);
+				}else{
+					view.update2DeleteCircle(circleId);
+					circleFragment.showMsg(R.string.delete_circle_success);
+				}
 			}
 		});
 	}
@@ -78,13 +88,17 @@ public class CirclePresenter implements CircleContract.Presenter{
 	* @return void    返回类型 
 	* @throws
 	 */
-	public void addFavort(final int circlePosition){
-		mCircleModel.addFavort(new IDataRequestListener() {
-
+	public void addFavort(final int circlePosition,CircleItem circleItem){
+		docCircleModel.likeCircle(circlePosition, circleItem, new MyCallBack<FavortItem>() {
 			@Override
-			public void loadSuccess(Object object) {
-				FavortItem item = DatasUtil.createCurUserFavortItem();
-				view.update2AddFavorite(circlePosition, item);
+			public void done(FavortItem data) {
+				if(data==null){
+				//发送失败通知
+					circleFragment.showMsg(R.string.like_fail);
+				}else{
+					view.update2AddFavorite(circlePosition,data);
+					circleFragment.showMsg(R.string.like_success);
+				}
 			}
 		});
 	}
@@ -97,12 +111,16 @@ public class CirclePresenter implements CircleContract.Presenter{
 	* @return void    返回类型 
 	* @throws
 	 */
-	public void deleteFavort(final int circlePosition, final String favortId){
-		mCircleModel.deleteFavort(new IDataRequestListener() {
-
+	public void deleteFavort(final int circlePosition,final String favortId,CircleItem item ){
+		docCircleModel.unLikeCircle(item, new MyCallBack<String>() {
 			@Override
-			public void loadSuccess(Object object) {
-				view.update2DeleteFavort(circlePosition, favortId);
+			public void done(String data) {
+				if(data==null){circleFragment.showMsg(R.string.delete_like_fail);
+				}
+				else{
+					view.update2DeleteFavort(circlePosition,favortId);
+					circleFragment.showMsg(R.string.delete_like_sucess);
+				}
 			}
 		});
 	}
@@ -116,25 +134,28 @@ public class CirclePresenter implements CircleContract.Presenter{
 	* @return void    返回类型 
 	* @throws
 	 */
-	public void addComment(final String content, final CommentConfig config){
+	public void addComment(final String content, final CommentConfig config,CircleItem circleItem){
 		if(config == null){
 			return;
 		}
-		mCircleModel.addComment(new IDataRequestListener() {
-
+		CommentItem item=new CommentItem();
+		item.setUser(DatasUtil.curUser);
+		if(config.commentType== CommentConfig.Type.REPLY){
+			item.setToReplyUser(config.replyUser);
+		}
+		item.setContent(content);
+		docCircleModel.addComment(item, circleItem, new MyCallBack<CommentItem>() {
 			@Override
-			public void loadSuccess(Object object) {
-				CommentItem newItem = null;
-				if (config.commentType == CommentConfig.Type.PUBLIC) {
-					newItem = DatasUtil.createPublicComment(content);
-				} else if (config.commentType == CommentConfig.Type.REPLY) {
-					newItem = DatasUtil.createReplyComment(config.replyUser, content);
+			public void done(CommentItem data) {
+				if(data==null){
+					circleFragment.showMsg(R.string.comment_fail);
+				}else{
+					view.update2AddComment(config.circlePosition, data);
+					circleFragment.showMsg(R.string.comment_success);
 				}
-
-				view.update2AddComment(config.circlePosition, newItem);
 			}
-
 		});
+
 	}
 	
 	/**
@@ -146,15 +167,21 @@ public class CirclePresenter implements CircleContract.Presenter{
 	* @return void    返回类型 
 	* @throws
 	 */
-	public void deleteComment(final int circlePosition, final String commentId){
-		mCircleModel.deleteComment(new IDataRequestListener(){
-
+	public void deleteComment(final int circlePosition, final String commentId,CommentItem commentItem,CircleItem circleItem){
+		docCircleModel.deleteComment(commentItem, circleItem, new MyCallBack<String>() {
 			@Override
-			public void loadSuccess(Object object) {
-				view.update2DeleteComment(circlePosition, commentId);
+			public void done(String data) {
+				if(data==null){//show error msg
+					circleFragment.showMsg(R.string.delete_comment_fail);
+				}
+				else{
+
+					view.update2DeleteComment(circlePosition, commentId);
+					circleFragment.showMsg(R.string.delete_comment_success);
+				}
 			}
-			
 		});
+
 	}
 
 	/**

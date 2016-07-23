@@ -17,7 +17,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.happydoc.lewis.myapplication.App;
 import com.happydoc.lewis.myapplication.R;
-import com.happydoc.lewis.myapplication.circle.activity.ImagePagerActivity;
+import com.happydoc.lewis.myapplication.atts.ImageSize;
+
+import com.happydoc.lewis.myapplication.circle.activity.NewImagePagerActivity;
 import com.happydoc.lewis.myapplication.circle.bean.ActionItem;
 import com.happydoc.lewis.myapplication.circle.bean.CircleItem;
 import com.happydoc.lewis.myapplication.circle.bean.CommentConfig;
@@ -139,7 +141,7 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
                 public void onClick(View v) {
                     //删除
                     if(presenter!=null){
-                        presenter.deleteCircle(circleId);
+                        presenter.deleteCircle(circleId,(CircleItem)datas.get(circlePosition));
                     }
                 }
             });
@@ -166,7 +168,7 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
                             CommentItem commentItem = commentsDatas.get(commentPosition);
                             if(DatasUtil.curUser.getId().equals(commentItem.getUser().getId())){//复制或者删除自己的评论
 
-                                CommentDialog dialog = new CommentDialog(context, presenter, commentItem, circlePosition);
+                                CommentDialog dialog = new CommentDialog(context, presenter, commentItem, circlePosition,(CircleItem)datas.get(circlePosition));
                                 dialog.show();
                             }else{//回复别人的评论
                                 if(presenter != null){
@@ -185,7 +187,7 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
                         public void onItemLongClick(int commentPosition) {
                             //长按进行复制或者删除
                             CommentItem commentItem = commentsDatas.get(commentPosition);
-                            CommentDialog dialog = new CommentDialog(context, presenter, commentItem, circlePosition);
+                            CommentDialog dialog = new CommentDialog(context, presenter, commentItem, circlePosition,(CircleItem) datas.get(circlePosition));
                             dialog.show();
                         }
                     });
@@ -239,8 +241,8 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
                             @Override
                             public void onItemClick(View view, int position) {
                                 //imagesize是作为loading时的图片size
-                                ImagePagerActivity.ImageSize imageSize = new ImagePagerActivity.ImageSize(view.getMeasuredWidth(), view.getMeasuredHeight());
-                                ImagePagerActivity.startImagePagerActivity(context, photos, position, imageSize);
+                                ImageSize imageSize = new ImageSize(view.getMeasuredWidth(), view.getMeasuredHeight());
+                                NewImagePagerActivity.startImagePagerActivity(context, photos, position, imageSize);
                             }
                         });
                     } else {
@@ -409,9 +411,9 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
                     mLasttime = System.currentTimeMillis();
                     if(presenter != null){
                         if ("赞".equals(actionitem.mTitle.toString())) {
-                            presenter.addFavort(mCirclePosition);
+                            presenter.addFavort(mCirclePosition,(CircleItem) datas.get(mCirclePosition));
                         } else {//取消点赞
-                            presenter.deleteFavort(mCirclePosition, mFavorId);
+                            presenter.deleteFavort(mCirclePosition, mFavorId,(CircleItem) datas.get(mCirclePosition));
                         }
                     }
                     break;

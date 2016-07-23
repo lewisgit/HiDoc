@@ -2,6 +2,8 @@ package com.happydoc.lewis.myapplication.circle.bean;
 
 import android.text.TextUtils;
 
+import com.avos.avoscloud.AVObject;
+
 import java.util.List;
 
 
@@ -28,7 +30,11 @@ public class CircleItem extends BaseBean{
 	private User user;
 	private String videoUrl;
 	private String videoImgUrl;
-	
+	private AVObject cirlceObj;
+	public void setCirlceObj(AVObject avObject){
+		this.cirlceObj=avObject;
+	}
+	public AVObject getCirlceObj(){return this.cirlceObj;}
 	public String getId() {
 		return id;
 	}

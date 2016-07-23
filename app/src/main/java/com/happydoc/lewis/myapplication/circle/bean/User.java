@@ -1,4 +1,7 @@
 package com.happydoc.lewis.myapplication.circle.bean;
+
+import com.avos.avoscloud.AVObject;
+
 /**
  * 
 * @ClassName: User 
@@ -11,6 +14,15 @@ public class User {
 	private String id;
 	private String name;
 	private String headUrl;
+	private AVObject userObj;
+
+	public void setUserObj(AVObject userObj) {
+		this.userObj = userObj;
+	}
+	public AVObject getUserObj() {
+		return userObj;
+	}
+
 	public User(String id, String name, String headUrl){
 		this.id = id;
 		this.name = name;

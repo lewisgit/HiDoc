@@ -1,5 +1,7 @@
 package com.happydoc.lewis.myapplication.circle.bean;
 
+import com.avos.avoscloud.AVObject;
+
 import java.io.Serializable;
 /**
  * 
@@ -15,6 +17,13 @@ public class CommentItem implements Serializable{
 	private User user;
 	private User toReplyUser;
 	private String content;
+	private AVObject commentObj;
+	public void setCommentObj(AVObject commentObj){
+		this.commentObj=commentObj;
+	}
+	public AVObject getCommentObj(){
+		return this.commentObj;
+	}
 	public String getId() {
 		return id;
 	}

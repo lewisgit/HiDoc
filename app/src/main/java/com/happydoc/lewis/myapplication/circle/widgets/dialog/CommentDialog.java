@@ -12,6 +12,7 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.happydoc.lewis.myapplication.R;
+import com.happydoc.lewis.myapplication.circle.bean.CircleItem;
 import com.happydoc.lewis.myapplication.circle.bean.CommentItem;
 import com.happydoc.lewis.myapplication.circle.mvp.presenter.CirclePresenter;
 import com.happydoc.lewis.myapplication.circle.utils.DatasUtil;
@@ -30,14 +31,15 @@ public class CommentDialog extends Dialog implements
 	private CirclePresenter mPresenter;
 	private CommentItem mCommentItem;
 	private int mCirclePosition;
-
+	private CircleItem circleItem;
 	public CommentDialog(Context context, CirclePresenter presenter,
-			CommentItem commentItem, int circlePosition) {
+			CommentItem commentItem, int circlePosition,CircleItem circleItem) {
 		super(context, R.style.comment_dialog);
 		mContext = context;
 		this.mPresenter = presenter;
 		this.mCommentItem = commentItem;
 		this.mCirclePosition = circlePosition;
+		this.circleItem=circleItem;
 	}
 
 	@Override
@@ -87,7 +89,7 @@ public class CommentDialog extends Dialog implements
 			break;
 		case R.id.deleteTv:
 			if (mPresenter != null && mCommentItem != null) {
-				mPresenter.deleteComment(mCirclePosition, mCommentItem.getId());
+				mPresenter.deleteComment(mCirclePosition, mCommentItem.getId(),mCommentItem,circleItem );
 			}
 			dismiss();
 			break;

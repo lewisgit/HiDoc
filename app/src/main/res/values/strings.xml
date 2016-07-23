@@ -190,4 +190,14 @@
     <string name="send_circle_fail">发送失败</string>
     <string name="send_circle_success">发送成功</string>
 
+    <string name="comment_success">评论成功</string>
+    <string name="comment_fail">评论失败</string>
+    <string name="delete_comment_success">删除评论成功</string>
+    <string name="delete_comment_fail">删除评论失败</string>
+    <string name="like_success">点赞成功</string>
+    <string name="like_fail">点赞失败</string>
+    <string name="delete_like_sucess">取消点赞成功</string>
+    <string name="delete_like_fail">取消点赞失败</string>
+    <string name="delete_circle_success">删除圈子成功</string>
+    <string name="delete_circle_fail">删除圈子失败</string>
 </resources>

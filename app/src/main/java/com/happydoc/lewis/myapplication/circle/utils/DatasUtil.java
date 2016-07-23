@@ -1,5 +1,7 @@
 package com.happydoc.lewis.myapplication.circle.utils;
 
+import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVUser;
 import com.happydoc.lewis.myapplication.circle.bean.CircleItem;
 import com.happydoc.lewis.myapplication.circle.bean.CommentItem;
 import com.happydoc.lewis.myapplication.circle.bean.FavortItem;
@@ -67,7 +69,21 @@ public class DatasUtil {
 	 * 评论id自增长
 	 */
 	private static int commentId = 0;
-	public static final User curUser = new User("0", "自己", HEADIMG[0]);
+	public static final User curUser;
+	static{
+		if(AVUser.getCurrentUser()!=null){
+			AVUser currentUser=AVUser.getCurrentUser();
+			String curName=currentUser.getString("Name");
+			curName=curName==null?"null":curName;
+			AVFile avFile=currentUser.getAVFile("Photo");
+			//currentUser=AVUser.getCurrentUser();
+			String fileUrl=avFile==null?null:avFile.getUrl();
+		curUser=new User(currentUser.getObjectId(),curName,fileUrl);
+			curUser.setUserObj(currentUser);
+		}else{
+			curUser=new User("null","null",null);
+		}
+	}
 	static {
 		User user1 = new User("1", "张三", HEADIMG[1]);
 		User user2 = new User("2", "李四", HEADIMG[2]);

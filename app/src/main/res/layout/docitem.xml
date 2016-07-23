@@ -16,8 +16,8 @@
         android:layout_height="50dip"
         android:src="@drawable/circle"
         android:id="@+id/doc_avatar"
-        app:civ_border_width="2dp"
-        app:civ_border_color="#FF000000"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/color_aeaeae"
         />
 
     <LinearLayout
