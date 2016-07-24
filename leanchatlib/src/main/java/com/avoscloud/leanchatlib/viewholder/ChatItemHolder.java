@@ -14,6 +14,7 @@ import com.avoscloud.leanchatlib.R;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.event.ImTypeMessageResendEvent;
 import com.avoscloud.leanchatlib.event.LeftChatItemClickEvent;
+import com.avoscloud.leanchatlib.utils.GetUserInfoCallBack;
 import com.avoscloud.leanchatlib.utils.PhotoUtils;
 import com.avoscloud.leanchatlib.utils.ThirdPartUserUtils;
 import com.avoscloud.leanchatlib.utils.Utils;
@@ -71,8 +72,19 @@ public class ChatItemHolder extends CommonViewHolder {
     timeView.setText(Utils.millisecsToDateString(message.getTimestamp()));
 
     String userId = message.getFrom();
-    nameView.setText(ThirdPartUserUtils.getInstance().getUserName(userId));
-    ImageLoader.getInstance().displayImage(ThirdPartUserUtils.getInstance().getUserAvatar(userId), avatarView, PhotoUtils.avatarImageOptions);
+    ThirdPartUserUtils.getInstance().getUserName(userId, new GetUserInfoCallBack<String>() {
+      @Override
+      public void done(String data) {
+        nameView.setText(data);
+      }
+    });
+    ThirdPartUserUtils.getInstance().getUserAvatar(userId, new GetUserInfoCallBack<String>() {
+      @Override
+      public void done(String data) {
+        ImageLoader.getInstance().displayImage(data, avatarView, PhotoUtils.avatarImageOptions);
+      }
+    });
+
 
     switch (message.getMessageStatus()) {
       case AVIMMessageStatusFailed:

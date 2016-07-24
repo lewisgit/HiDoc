@@ -179,13 +179,17 @@
     <string name="empty_username">用户名不能为空</string>
     <string name="empty_pwd">密码不能为空</string>
 
-    <string name="doclist_fragment">doclistfragment</string>
-    <string name="docpage_fragment">docpagefragment</string>
-    <string name="circle_fragment">circlefragment</string>
-    <string name="doclist_btn_script">在线咨询</string>
-    <string name="video_btn_script">母婴课堂</string>
-    <string name="circle_btn_scriptt">圈子</string>
-    <string name="me_btn_script">我</string>
+
+
+    <string name="doclist_script">在线咨询</string>
+    <string name="video_script">母婴课堂</string>
+    <string name="circle_scriptt">圈子</string>
+    <string name="me_script">我</string>
+    <string name="info_script">我的信息</string>
+    <string name="set_script">设置</string>
+    <string name="chatlist_script">我的提问</string>
+
+    <string name="signout">退出当前账户</string>
 
     <string name="send_circle_fail">发送失败</string>
     <string name="send_circle_success">发送成功</string>
@@ -200,4 +204,6 @@
     <string name="delete_like_fail">取消点赞失败</string>
     <string name="delete_circle_success">删除圈子成功</string>
     <string name="delete_circle_fail">删除圈子失败</string>
+
+    <string name="edit_photo">编辑头像</string>
 </resources>

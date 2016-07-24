@@ -36,7 +36,7 @@ dependencies {
     // support lib
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:recyclerview-v7:23.1.0'
-//compile 'com.android.support:recyclerview-v7:23.1.0'//
+
     compile 'org.apache.httpcomponents:httpmime:4.2.4'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.jakewharton:butterknife:7.0.1'

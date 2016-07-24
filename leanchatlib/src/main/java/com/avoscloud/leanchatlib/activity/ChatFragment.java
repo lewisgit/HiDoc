@@ -68,6 +68,7 @@ public class ChatFragment extends android.support.v4.app.Fragment {
     View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
     localCameraPath = PathUtils.getPicturePathByCurrentTime(getContext());
+
     recyclerView = (RecyclerView) view.findViewById(R.id.fragment_chat_rv_chat);
     refreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.fragment_chat_srl_pullrefresh);
     refreshLayout.setEnabled(false);

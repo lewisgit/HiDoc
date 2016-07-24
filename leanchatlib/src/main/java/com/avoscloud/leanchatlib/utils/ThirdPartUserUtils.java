@@ -35,23 +35,49 @@ public class ThirdPartUserUtils {
     return thirdPartDataProvider.getSelf();
   }
 
-  public String getUserName(String userId) {
-    ThirdPartUser user = getFriend(userId);
-    return (null != user ? user.name : "");
+  public void getUserName(String userId, final GetUserInfoCallBack<String> callBack) {
+    getFriend(userId, new FetchUserCallBack() {
+      @Override
+      public void done(List<ThirdPartUser> userList, Exception e) {
+        if(e==null){
+          if(userList.get(0)!=null){
+            callBack.done(userList.get(0).name);
+          }else{
+            callBack.done("");
+          }
+        }else{
+          callBack.done("");
+        }
+      }
+    });
   }
 
-  public String getUserAvatar(String userId) {
-    ThirdPartUser user = getFriend(userId);
-    return (null != user ? user.avatarUrl : "");
+  public void getUserAvatar(String userId, final GetUserInfoCallBack<String> callBack) {
+    getFriend(userId, new FetchUserCallBack() {
+      @Override
+      public void done(List<ThirdPartUser> userList, Exception e) {
+        if(e==null){
+          if(userList.get(0)!=null){
+            callBack.done(userList.get(0).avatarUrl);
+          }else{
+            callBack.done("");
+          }
+        }else{
+          callBack.done("");
+        }
+      }
+    });
+    ///return (null != user ? user.avatarUrl : "");
   }
 
-  private ThirdPartUser getFriend(String userId) {
+  private void getFriend(String userId,final FetchUserCallBack callBack) {
     checkDataProvider();
     if (ThirdPartDataCache.getInstance().hasCachedUser(userId)) {
-      return ThirdPartDataCache.getInstance().getCachedUser(userId);
+      callBack.done(Arrays.asList(ThirdPartDataCache.getInstance().getCachedUser(userId)),null);
     } else {
+      thirdPartDataProvider.getFriend(userId,callBack);
       refreshUserData(Arrays.asList(userId));
-      return null;
+
     }
   }
 

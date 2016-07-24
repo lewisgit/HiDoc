@@ -18,6 +18,12 @@ public class FragmentView {
         return view.findViewById(id);
     }
     public void showMsg(int id){
+        if(view!=null)
         Toast.makeText(view.getContext(),fragment.getString(id),Toast.LENGTH_LONG).show();
+    }
+
+    public void showMsg(String msg){
+        if(view!=null)
+        Toast.makeText(view.getContext(),msg,Toast.LENGTH_LONG).show();
     }
 }

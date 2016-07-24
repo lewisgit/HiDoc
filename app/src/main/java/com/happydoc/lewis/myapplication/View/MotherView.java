@@ -23,4 +23,7 @@ public class MotherView {
     }
     public String getString(int id){if(activity!=null) return activity.getString(id);
     else return "";}
+    public AppCompatActivity getActivity() {
+        return activity;
+    }
 }

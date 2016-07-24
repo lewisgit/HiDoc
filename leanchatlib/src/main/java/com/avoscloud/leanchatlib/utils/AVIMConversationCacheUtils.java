@@ -69,4 +69,8 @@ public class AVIMConversationCacheUtils {
   public static abstract class CacheConversationCallback {
     public abstract void done(AVException e);
   }
+
+  public static Map<String, AVIMConversation> getConversationMap() {
+    return conversationMap;
+  }
 }

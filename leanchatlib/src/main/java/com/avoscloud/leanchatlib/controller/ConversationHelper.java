@@ -23,15 +23,15 @@ public class ConversationHelper {
       LogUtils.d("invalid reason : conversation members null or empty");
       return false;
     }
-    Object type = conversation.getAttribute(ConversationType.TYPE_KEY);
-    if (type == null) {
+    //Object type = conversation.getAttribute(ConversationType.TYPE_KEY);
+    /*if (type == null) {
       LogUtils.d("invalid reason : type is null");
       return false;
-    }
+    }*/
 
-    int typeInt = (Integer) type;
-    if (typeInt == ConversationType.Single.getValue()) {
-      if (conversation.getMembers().size() != 2 ||
+    //int typeInt = (Integer) type;
+    //if (typeInt == ConversationType.Single.getValue()) {
+ /*     if (conversation.getMembers().size() != 2 ||
           conversation.getMembers().contains(ChatManager.getInstance().getSelfId()) == false) {
         LogUtils.d("invalid reason : oneToOne conversation not correct");
         return false;
@@ -41,15 +41,16 @@ public class ConversationHelper {
     } else {
       LogUtils.d("invalid reason : typeInt wrong");
       return false;
-    }
+    }*/
     return true;
   }
 
   public static ConversationType typeOfConversation(AVIMConversation conversation) {
     if (isValidConversation(conversation)) {
-      Object typeObject = conversation.getAttribute(ConversationType.TYPE_KEY);
+      return ConversationType.Single;
+      /*Object typeObject = conversation.getAttribute(ConversationType.TYPE_KEY);
       int typeInt = (Integer) typeObject;
-      return ConversationType.fromInt(typeInt);
+      return ConversationType.fromInt(typeInt);*/
     } else {
       LogUtils.e("invalid conversation ");
       // 因为 Group 不需要取 otherId，检查没那么严格，避免导致崩溃
@@ -65,7 +66,7 @@ public class ConversationHelper {
    */
   public static String otherIdOfConversation(AVIMConversation conversation) {
     if (isValidConversation(conversation)) {
-      if (typeOfConversation(conversation) == ConversationType.Single) {
+      if (true) {//fix in the future
         List<String> members = conversation.getMembers();
         if (members.size() == 2) {
           if (members.get(0).equals(ChatManager.getInstance().getSelfId())) {
@@ -84,7 +85,8 @@ public class ConversationHelper {
     if (isValidConversation(conversation)) {
       if (typeOfConversation(conversation) == ConversationType.Single) {
         String otherId = otherIdOfConversation(conversation);
-        String userName = ThirdPartUserUtils.getInstance().getUserName(otherId);
+        String userName ="group talk";//fix in the future
+        //String userName = ThirdPartUserUtils.getInstance().getUserName(otherId);
         return (TextUtils.isEmpty(userName) ? "对话" : userName);
       } else {
         return conversation.getName();

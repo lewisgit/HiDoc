@@ -12,13 +12,15 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.happydoc.lewis.myapplication.App;
+import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.R;
+import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
 import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
 import com.happydoc.lewis.myapplication.fragment.DocListFragment;
 import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
 
-import org.greenrobot.eventbus.EventBus;
+import de.greenrobot.event.EventBus;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,6 +31,9 @@ import java.util.List;
 public class MainActivityView extends MotherView implements ActivityView{
     public Fragment currentFragment;
     public FragmentInfo currentFragmentInfo;
+    public FragmentInfo backFragmentInfo;
+    public Fragment backFragment;
+
     public int fragmentRegionId;
     public EventBus eventBus;
     public TextView titleView;
@@ -58,10 +63,10 @@ public class MainActivityView extends MotherView implements ActivityView{
             }else{
                 fragmentTransaction.hide(currentFragment).add(fragmentRegionId,fragment).commit();
             }
-                if(fragmentInfo.btnImg!=null)
+                if(fragmentInfo.btnImg!=null){
                     setBtn(fragmentInfo.btnImg,fragmentInfo.pressRes,fragmentInfo.btnText,R.color.doc_blue);
                 if(currentFragmentInfo.btnImg!=null)
-                    setBtn(currentFragmentInfo.btnImg, currentFragmentInfo.releaseRes, currentFragmentInfo.btnText, R.color.doc_gray);
+                    setBtn(currentFragmentInfo.btnImg, currentFragmentInfo.releaseRes, currentFragmentInfo.btnText, R.color.doc_gray);}
 
                 //Set Fragment Title
 
@@ -76,8 +81,7 @@ public class MainActivityView extends MotherView implements ActivityView{
         }
     }
     //set btn view of bottom bar
-    public void setBtn(ImageView view, int resId, TextView textView,int color)
-    {
+    public void setBtn(ImageView view, int resId, TextView textView,int color) {
         view.setImageResource(resId);
         textView.setTextColor(ContextCompat.getColor(activity,color));
     }
@@ -86,6 +90,9 @@ public class MainActivityView extends MotherView implements ActivityView{
     }
     public void setEventBus(EventBus eventBus){
         this.eventBus=eventBus;
+        MainActivityEventBus.setEventBus(eventBus);
+        //MainActivity mainActivity=(MainActivity)activity;
+        //mainActivity.setEventBus(eventBus);
     }
     public EventBus getEventBus(){
         if(eventBus==null){
@@ -110,7 +117,7 @@ public class MainActivityView extends MotherView implements ActivityView{
         View.OnClickListener listener1=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventBus.post(new ShowFragmentEvent(R.string.doclist_fragment));
+                eventBus.post(new ShowFragmentEvent(R.string.doclist_script));
                 showMsg("testBtn!");}};
         if(doclistBtn!=null && doclistBtnText!=null){
         doclistBtn.setOnClickListener(listener1);
@@ -121,7 +128,7 @@ public class MainActivityView extends MotherView implements ActivityView{
         View.OnClickListener listener2=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventBus.post(new ShowFragmentEvent(R.string.docpage_fragment));
+                eventBus.post(new ShowFragmentEvent(R.string.video_script));
                 showMsg("testBtn!");}};
         if(videoBtnText!=null && videoBtn!=null){
         videoBtn.setOnClickListener(listener2);
@@ -132,14 +139,28 @@ public class MainActivityView extends MotherView implements ActivityView{
         View.OnClickListener listener3=new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                eventBus.post(new ShowFragmentEvent(R.string.circle_fragment));
+                eventBus.post(new ShowFragmentEvent(R.string.circle_scriptt));
                 //showMsg("testBtn!");
                 }};
         if(circleBtnText!=null && circleBtn!=null){
         circleBtn.setOnClickListener(listener3);
         circleBtnText.setOnClickListener(listener3);}
+
+
+        TextView meBtnTxt=(TextView) getView(R.id.me_btn_text);
+        ImageView meBtn=(ImageView) getView(R.id.me_btn);
+        View.OnClickListener listener4=new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                eventBus.post(new ShowFragmentEvent(R.string.me_script));
+            }
+        };
+        if(meBtn!=null) meBtn.setOnClickListener(listener4);
+        meBtnTxt.setOnClickListener(listener4);
     }
     public void setView(){
         titleView=(TextView)getView(R.id.tobbar_script);
     }
+
+
 }

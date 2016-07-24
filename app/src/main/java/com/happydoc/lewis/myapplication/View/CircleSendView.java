@@ -13,7 +13,7 @@ import com.happydoc.lewis.myapplication.adapter.AdapaterCridImage;
 import com.happydoc.lewis.myapplication.event.SelectImgEvent;
 import com.happydoc.lewis.myapplication.event.SendCircleEvent;
 
-import org.greenrobot.eventbus.EventBus;
+import de.greenrobot.event.EventBus;
 import org.w3c.dom.Text;
 
 /**

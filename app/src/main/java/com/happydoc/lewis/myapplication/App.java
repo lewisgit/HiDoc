@@ -2,11 +2,14 @@ package com.happydoc.lewis.myapplication;
 
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Environment;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.utils.ThirdPartUserUtils;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
@@ -31,7 +34,8 @@ public class App extends Application {
         initImageLoader(this);
         ChatManager.getInstance().init(this);
         //ThirdPartUserUtils.setThirdPartUserProvider(new CustomUserProvider());
-
+        GlobalInfos.setDisplayImageOptions(new DisplayImageOptions.Builder().bitmapConfig(Bitmap.Config.RGB_565)
+                .showImageForEmptyUri(R.mipmap.my_doctor).showImageOnFail(R.mipmap.my_doctor).cacheInMemory(true).cacheOnDisk(true).build());
         //
         mContext = getApplicationContext();
         //LeakCanary.install(this);

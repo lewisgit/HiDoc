@@ -17,6 +17,7 @@ import com.avoscloud.leanchatlib.event.ConversationItemClickEvent;
 import com.avoscloud.leanchatlib.model.ConversationType;
 import com.avoscloud.leanchatlib.model.Room;
 import com.avoscloud.leanchatlib.utils.ConversationManager;
+import com.avoscloud.leanchatlib.utils.GetUserInfoCallBack;
 import com.avoscloud.leanchatlib.utils.PhotoUtils;
 import com.avoscloud.leanchatlib.utils.ThirdPartUserUtils;
 import com.avoscloud.leanchatlib.utils.Utils;
@@ -60,14 +61,28 @@ public class ConversationItemHolder extends CommonViewHolder {
     final Room room = (Room) o;
     AVIMConversation conversation = room.getConversation();
     if (null != conversation) {
-      if (ConversationHelper.typeOfConversation(conversation) == ConversationType.Single) {
+      if (true) {
         String userId = ConversationHelper.otherIdOfConversation(conversation);
-        String avatar = ThirdPartUserUtils.getInstance().getUserAvatar(userId);
-        ImageLoader.getInstance().displayImage(avatar, avatarView, PhotoUtils.avatarImageOptions);
+
+        ThirdPartUserUtils.getInstance().getUserAvatar(userId, new GetUserInfoCallBack<String>() {
+          @Override
+          public void done(String data) {
+            ImageLoader.getInstance().displayImage(data, avatarView, PhotoUtils.avatarImageOptions);
+          }
+        });
+        ThirdPartUserUtils.getInstance().getUserName(userId, new GetUserInfoCallBack<String>() {
+          @Override
+          public void done(String data) {
+            nameView.setText(data);
+          }
+        });
       } else {
         avatarView.setImageBitmap(ConversationManager.getConversationIcon(conversation));
+        nameView.setText(ConversationHelper.nameOfConversation(conversation));
       }
-      nameView.setText(ConversationHelper.nameOfConversation(conversation));
+
+
+
 
       int num = room.getUnreadCount();
       unreadView.setText(num + "");

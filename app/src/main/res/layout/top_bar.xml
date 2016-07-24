@@ -18,7 +18,7 @@
         android:layout_weight="5"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="@string/doclist_btn_script"
+        android:text="@string/doclist_script"
         android:textSize="22sp"
         android:textColor="@color/white"/>
 <ImageView

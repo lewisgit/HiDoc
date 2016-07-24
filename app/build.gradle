@@ -27,7 +27,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':leanchatlib')
     //compile project(':PhotoViewlibrary')
-    compile 'org.greenrobot:eventbus:3.0.0'
+    //compile 'org.greenrobot:eventbus:3.0.0'
     compile project(':multi-image-selector')
     //compile project(':carouselview')
     //compile project(':BGABannerLib')

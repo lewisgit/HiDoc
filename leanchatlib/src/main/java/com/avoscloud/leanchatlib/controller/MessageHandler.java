@@ -12,6 +12,7 @@ import com.avos.avoscloud.im.v2.messages.AVIMTextMessage;
 import com.avoscloud.leanchatlib.R;
 import com.avoscloud.leanchatlib.event.ImTypeMessageEvent;
 import com.avoscloud.leanchatlib.model.ConversationType;
+import com.avoscloud.leanchatlib.utils.GetUserInfoCallBack;
 import com.avoscloud.leanchatlib.utils.ThirdPartUserUtils;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.LogUtils;
@@ -83,13 +84,12 @@ public class MessageHandler extends AVIMTypedMessageHandler<AVIMTypedMessage> {
 
   private void sendNotification(AVIMTypedMessage message, AVIMConversation conversation) {
     if (null != conversation && null != message) {
-      String notificationContent = message instanceof AVIMTextMessage ?
+      final String notificationContent = message instanceof AVIMTextMessage ?
         ((AVIMTextMessage) message).getText() : context.getString(R.string.unspport_message_type);
 
-      String userName = ThirdPartUserUtils.getInstance().getUserName(message.getFrom());
-      String title = (TextUtils.isEmpty(userName) ? "" : userName);
 
-      Intent intent = new Intent();
+
+      final Intent intent = new Intent();
       intent.setAction("com.avoscloud.chat.intent.client_notification");
       intent.putExtra(Constants.CONVERSATION_ID, conversation.getConversationId());
       intent.putExtra(Constants.MEMBER_ID, message.getFrom());
@@ -98,7 +98,14 @@ public class MessageHandler extends AVIMTypedMessageHandler<AVIMTypedMessage> {
       } else {
         intent.putExtra(Constants.NOTOFICATION_TAG, Constants.NOTIFICATION_SINGLE_CHAT);
       }
-      NotificationUtils.showNotification(context, title, notificationContent, null, intent);
+      ThirdPartUserUtils.getInstance().getUserName(message.getFrom(), new GetUserInfoCallBack<String>() {
+        @Override
+        public void done(String data) {
+          NotificationUtils.showNotification(context, data, notificationContent, null, intent);
+        }
+      });
+      //String title = (TextUtils.isEmpty(userName) ? "" : userName);
+
     }
   }
 }

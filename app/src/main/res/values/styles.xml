@@ -57,4 +57,30 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:windowSoftInputMode">adjustPan</item>
     </style>
+
+    <style name="me_entry_style">
+        <item name="android:background">@drawable/bg_layout_shape</item>
+    </style>
+
+    <style name="bg_line">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">1px</item>
+    <item name="android:background">@color/border_clo</item></style>
+
+    <style name="me_top_entry">
+        <item name="android:background">@drawable/top_layout_selector</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+    <style name="me_middle_entry">
+        <item name="android:background">@drawable/mid_layout_selector</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+    <style name="me_bt_entry">
+        <item name="android:background">@drawable/bottom_layout_selector</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+    <style name="me_single_entry">
+        <item name="android:background">@drawable/single_layout_selector</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
 </resources>

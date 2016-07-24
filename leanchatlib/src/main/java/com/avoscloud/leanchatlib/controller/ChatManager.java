@@ -163,7 +163,8 @@ public class ChatManager {
       if (i != 0) {
         sb.append(",");
       }
-      sb.append(ThirdPartUserUtils.getInstance().getUserName(id));
+      //group conversation fix in the future;
+      //sb.append(ThirdPartUserUtils.getInstance().getUserName(id));
     }
     if (sb.length() > 50) {
       return sb.subSequence(0, 50).toString();

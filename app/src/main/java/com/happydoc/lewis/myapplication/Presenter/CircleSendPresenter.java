@@ -15,8 +15,8 @@ import com.happydoc.lewis.myapplication.circle.mvp.modle.CircleModel;
 import com.happydoc.lewis.myapplication.event.SelectImgEvent;
 import com.happydoc.lewis.myapplication.event.SendCircleEvent;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
+import de.greenrobot.event.EventBus;
+import de.greenrobot.event.EventBus;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -46,7 +46,7 @@ public class CircleSendPresenter {
         view.eventBus=new EventBus();
         view.eventBus.register(this);
     }
-    @Subscribe
+   // @Subscribe
     public void onEvent(SelectImgEvent event){
         MultiImageSelector.create()
                 .count(maxImgNum)
@@ -55,7 +55,7 @@ public class CircleSendPresenter {
                 .start(event.activity,REQUEST_CODE);
     }
 
-    @Subscribe
+  //  @Subscribe
     public void onEvent(SendCircleEvent event){
         new Thread(runnable).start();
     }
