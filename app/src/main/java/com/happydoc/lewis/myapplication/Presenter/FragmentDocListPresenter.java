@@ -41,6 +41,7 @@ public class FragmentDocListPresenter {
             public void done(List<DoctorInfo> data) {view.setListViewData(data);
             }
         });
+        view.setListVIewItemClickListener();
     }
 
 }

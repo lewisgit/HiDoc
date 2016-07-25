@@ -26,4 +26,37 @@ public class DoctorInfo implements Serializable{
         this.docWeekFee=docWeekFee;
         this.docTitle=docTitle;
     }
+
+    public AVObject getDocObject() {
+        return docObject;
+    }
+
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public String getDocHosp() {
+        return docHosp;
+    }
+
+    public String getDocIntro() {
+        return docIntro;
+    }
+
+    public String getDocOnceFee() {
+        return docOnceFee;
+    }
+
+    public String getDocTitle() {
+        return docTitle;
+    }
+
+    public String getDocWeekFee() {
+        return docWeekFee;
+    }
+
+    public String getName() {
+        return name;
+    }
+
 }

@@ -16,7 +16,15 @@ public class FragmentInfo {
     public int releaseRes;
     public ImageView btnImg;
     public TextView btnText;
+    public boolean isShowReload;
     public int titleStringId;
     public boolean backBtnEnable;
     public boolean searchBtnEnable;
+    public boolean getIsShowReload(){
+        return this.isShowReload;
+    }
+
+    public void setIsShowReload(boolean isShowReload) {
+        this.isShowReload = isShowReload;
+    }
 }

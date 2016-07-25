@@ -19,11 +19,15 @@ public class FragmentView {
     }
     public void showMsg(int id){
         if(view!=null)
-        Toast.makeText(view.getContext(),fragment.getString(id),Toast.LENGTH_LONG).show();
+            try{
+        Toast.makeText(view.getContext(),fragment.getString(id),Toast.LENGTH_LONG).show();}
+            catch (IllegalStateException e){e.printStackTrace();}
     }
 
     public void showMsg(String msg){
         if(view!=null)
-        Toast.makeText(view.getContext(),msg,Toast.LENGTH_LONG).show();
+            try{
+                Toast.makeText(view.getContext(),msg,Toast.LENGTH_LONG).show();}
+            catch (IllegalStateException e){e.printStackTrace();}
     }
 }

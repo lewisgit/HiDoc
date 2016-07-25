@@ -12,12 +12,14 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.happydoc.lewis.myapplication.App;
+import com.happydoc.lewis.myapplication.Bean.BtnInfo;
 import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
 import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
 import com.happydoc.lewis.myapplication.fragment.DocListFragment;
+import com.happydoc.lewis.myapplication.fragment.GeneralFragment;
 import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
 
 import de.greenrobot.event.EventBus;
@@ -40,6 +42,8 @@ public class MainActivityView extends MotherView implements ActivityView{
     //View
     public ImageView sendCircle;
 
+    //currentBtn;
+    BtnInfo curBtn;
 
     public HashMap<String,FragmentInfo> fragmentList=new HashMap<>();
     public MainActivityView(AppCompatActivity activity){
@@ -59,21 +63,36 @@ public class MainActivityView extends MotherView implements ActivityView{
         if(currentFragment!=fragment && fragment!=null){
             if(currentFragment!=null){
             if(fragment.isAdded()) {
+                if(fragmentInfo.getIsShowReload())
+                ((GeneralFragment)fragment).getPresenter().refreshView();
                 fragmentTransaction.hide(currentFragment).show(fragment).commit();
             }else{
                 fragmentTransaction.hide(currentFragment).add(fragmentRegionId,fragment).commit();
             }
                 if(fragmentInfo.btnImg!=null){
                     setBtn(fragmentInfo.btnImg,fragmentInfo.pressRes,fragmentInfo.btnText,R.color.doc_blue);
-                if(currentFragmentInfo.btnImg!=null)
-                    setBtn(currentFragmentInfo.btnImg, currentFragmentInfo.releaseRes, currentFragmentInfo.btnText, R.color.doc_gray);}
+
+                if(curBtn!=null)
+                    if(curBtn.getImg()!=fragmentInfo.btnImg)
+                    setBtn(curBtn.getImg(), curBtn.getImgResId(), curBtn.getTxt(), R.color.doc_gray);
+                    BtnInfo newBtn=new BtnInfo();
+                    newBtn.setImg(fragmentInfo.btnImg);
+                    newBtn.setImgResId(fragmentInfo.releaseRes);
+                    newBtn.setTxt(fragmentInfo.btnText);
+                    curBtn=newBtn;
+                }
 
                 //Set Fragment Title
 
             }else{
                 fragmentTransaction.add(fragmentRegionId,fragment).commit();
-                if(fragmentInfo.btnImg!=null)
+                if(fragmentInfo.btnImg!=null){
                     setBtn(fragmentInfo.btnImg,fragmentInfo.pressRes,fragmentInfo.btnText,R.color.doc_blue);
+                BtnInfo newBtn=new BtnInfo();
+                newBtn.setImg(fragmentInfo.btnImg);
+                newBtn.setImgResId(fragmentInfo.releaseRes);
+                newBtn.setTxt(fragmentInfo.btnText);
+                curBtn=newBtn;}
             }
             currentFragment=fragment;
             currentFragmentInfo=fragmentInfo;
@@ -118,7 +137,8 @@ public class MainActivityView extends MotherView implements ActivityView{
             @Override
             public void onClick(View v) {
                 eventBus.post(new ShowFragmentEvent(R.string.doclist_script));
-                showMsg("testBtn!");}};
+                //showMsg("testBtn!");
+            }};
         if(doclistBtn!=null && doclistBtnText!=null){
         doclistBtn.setOnClickListener(listener1);
         doclistBtnText.setOnClickListener(listener1);}
@@ -129,7 +149,8 @@ public class MainActivityView extends MotherView implements ActivityView{
             @Override
             public void onClick(View v) {
                 eventBus.post(new ShowFragmentEvent(R.string.video_script));
-                showMsg("testBtn!");}};
+                //showMsg("testBtn!");
+            }};
         if(videoBtnText!=null && videoBtn!=null){
         videoBtn.setOnClickListener(listener2);
         videoBtnText.setOnClickListener(listener2);}

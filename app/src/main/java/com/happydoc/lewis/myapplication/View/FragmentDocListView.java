@@ -8,9 +8,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.avos.avoscloud.AVObject;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.account.DoctorInfo;
 import com.happydoc.lewis.myapplication.adapter.AdapterDocList;
+import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
+import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
 import com.happydoc.lewis.myapplication.fragmentinfo.CarouselItem;
 import com.happydoc.lewis.myapplication.scrollimage.common.ScrollImageEntity;
 import com.happydoc.lewis.myapplication.scrollimage.image.ImageScroll;
@@ -73,6 +76,18 @@ public class FragmentDocListView extends FragmentView {
     }
     //-------------------------------------------
 
+    public void setListVIewItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DoctorInfo doctorInfo=listViewAdapter.getItem(position-1);
+                if(doctorInfo!=null){
+                    GlobalInfos.setCurDocInfo(doctorInfo);
+                    MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.docpage_script));
+                }
+            }
+        });
+    }
  /*   private List<String> getData(){
 
         List<String> data = new ArrayList<String>();

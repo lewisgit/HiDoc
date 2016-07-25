@@ -22,6 +22,7 @@ import com.happydoc.lewis.myapplication.fragment.DocPageFragment;
 import com.happydoc.lewis.myapplication.fragment.MeFragment;
 import com.happydoc.lewis.myapplication.fragment.MeInfoFragment;
 import com.happydoc.lewis.myapplication.fragment.SettingFragment;
+import com.happydoc.lewis.myapplication.fragment.VideoFragment;
 import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
 
 import de.greenrobot.event.EventBus;
@@ -69,7 +70,7 @@ public class MainPresenter {
         fragmentInfos.add(fragmentInfo1);
 
         FragmentInfo fragmentInfo2=new FragmentInfo();
-        fragmentInfo2.fragment=new DocPageFragment();
+        fragmentInfo2.fragment=new VideoFragment();
         fragmentInfo2.fragmentId=view.activity.getString(R.string.video_script);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         fragmentInfo2.pressRes=R.drawable.video_press;
@@ -133,6 +134,18 @@ public class MainPresenter {
         // fragmentInfo4.btnImg=(ImageView)view.getView(R.id.me_btn);
         //fragmentInfo4.btnText=(TextView) view.getView(R.id.me_btn_text);
         fragmentInfos.add(fragmentInfo7);
+
+        FragmentInfo fragmentInfo8=new FragmentInfo();
+        fragmentInfo8.fragment=new DocPageFragment();
+        fragmentInfo8.fragmentId=view.activity.getString(R.string.docpage_script);
+        fragmentInfo8.fragmentTitle=view.getString(R.string.docpage_script);
+        fragmentInfo8.setIsShowReload(true);
+        // fragmentInfo1.lightBtn=R.id.docList_btn;
+        //fragmentInfo4.pressRes=R.drawable.me_press;
+        // fragmentInfo4.releaseRes=R.drawable.me;
+        // fragmentInfo4.btnImg=(ImageView)view.getView(R.id.me_btn);
+        //fragmentInfo4.btnText=(TextView) view.getView(R.id.me_btn_text);
+        fragmentInfos.add(fragmentInfo8);
     }
 
    // @Subscribe

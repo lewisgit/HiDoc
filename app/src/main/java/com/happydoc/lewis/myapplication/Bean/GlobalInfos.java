@@ -1,5 +1,6 @@
 package com.happydoc.lewis.myapplication.Bean;
 
+import com.happydoc.lewis.myapplication.account.DoctorInfo;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -9,7 +10,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 public class GlobalInfos {
     static private UserInfo userInfo;
     static private DisplayImageOptions displayImageOptions;
-
+    static private DoctorInfo curDocInfo;
     public static void setDisplayImageOptions(DisplayImageOptions displayImageOptions) {
         GlobalInfos.displayImageOptions = displayImageOptions;
     }
@@ -24,5 +25,13 @@ public class GlobalInfos {
 
     public static UserInfo getUserInfo() {
         return userInfo;
+    }
+
+    public static void setCurDocInfo(DoctorInfo curDocInfo) {
+        GlobalInfos.curDocInfo = curDocInfo;
+    }
+
+    public static DoctorInfo getCurDocInfo() {
+        return curDocInfo;
     }
 }

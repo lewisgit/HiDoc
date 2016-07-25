@@ -188,6 +188,8 @@
     <string name="info_script">我的信息</string>
     <string name="set_script">设置</string>
     <string name="chatlist_script">我的提问</string>
+    <string name="docpage_script">医生主页</string>
+
 
     <string name="signout">退出当前账户</string>
 
@@ -206,4 +208,9 @@
     <string name="delete_circle_fail">删除圈子失败</string>
 
     <string name="edit_photo">编辑头像</string>
+
+
+
+    <!--doc page-->
+    <string name="page_not_ready">获取信息失败，请重新载入</string>
 </resources>
