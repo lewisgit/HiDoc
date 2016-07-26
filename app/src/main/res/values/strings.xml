@@ -81,6 +81,7 @@
     <string name="age_success">年龄修改成功</string>
     <string name="sex_success">性别修改成功</string>
     <string name="occuption_success">职业修改成功</string>
+    <string name="set_fail">设置失败</string>
     <!--设置-->
     <string name="clear_storage">清除缓存</string>
     <string name="notification">消息提醒</string>

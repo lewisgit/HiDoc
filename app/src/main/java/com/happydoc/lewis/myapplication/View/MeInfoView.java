@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.happydoc.lewis.myapplication.Bean.UserInfo;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.event.EditUserInfoEvent;
 
@@ -49,5 +50,13 @@ public class MeInfoView extends FragmentView {
         editPhone.setOnClickListener(listener);
         editName.setOnClickListener(listener);
         editCareer.setOnClickListener(listener);
+    }
+    public void showInfo(UserInfo info){
+        userAge.setText(info.getUserAge());
+        userCareer.setText(info.getUserCareer());
+        userPhone.setText(info.getPhoneNum());
+        userSex.setText(info.getUserSex());
+        userName.setText(info.getUserName());
+
     }
 }

@@ -5,6 +5,7 @@ import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.GetCallback;
+import com.avos.avoscloud.SaveCallback;
 import com.happydoc.lewis.myapplication.Bean.UserInfo;
 import com.happydoc.lewis.myapplication.event.MyCallBack;
 
@@ -42,5 +43,53 @@ public class UserInfoModel {
                 }
             });
         }else{callBack.done(null);}
+    }
+    public void editName(String name,final MyCallBack<Exception> callBack){
+        AVUser curUser=AVUser.getCurrentUser();
+        if (curUser != null) {
+            curUser.put("Name",name);
+            curUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    callBack.done(e);
+                }
+            });
+        }else{callBack.done(new Exception("edit fail!"));}
+    }
+    public void editSex(String sex, final MyCallBack<Exception> callBack){
+        AVUser curUser=AVUser.getCurrentUser();
+        if (curUser != null) {
+            curUser.put("Sex",sex);
+            curUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    callBack.done(e);
+                }
+            });
+        }else{callBack.done(new Exception("edit fail!"));}
+    }
+    public void editAge(String age, final MyCallBack<Exception> callBack){
+        AVUser curUser=AVUser.getCurrentUser();
+        if (curUser != null) {
+            curUser.put("Age",Integer.parseInt(age));
+            curUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    callBack.done(e);
+                }
+            });
+        }else{callBack.done(new Exception("edit fail!"));}
+    }
+    public void editCareer(String career, final MyCallBack<Exception> callBack){
+        AVUser curUser=AVUser.getCurrentUser();
+        if (curUser != null) {
+            curUser.put("Ocuupation",career);
+            curUser.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(AVException e) {
+                    callBack.done(e);
+                }
+            });
+        }else{callBack.done(new Exception("edit fail!"));}
     }
 }
