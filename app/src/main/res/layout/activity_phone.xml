@@ -75,7 +75,6 @@
             android:layout_marginLeft="5dp"
             android:textColor="@color/white"
             android:background="@drawable/grey_corners_3dp"
-            android:shadowRadius="@integer/abc_max_action_buttons"
             android:gravity="center"
             />
     </LinearLayout>

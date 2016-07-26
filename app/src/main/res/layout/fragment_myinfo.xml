@@ -16,6 +16,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/edit_avatar"
             style="@style/me_top_entry"
             android:layout_width="match_parent"
             android:layout_height="80dp"
@@ -73,6 +74,7 @@
         </RelativeLayout>
             <View style="@style/bg_line"/>
             <RelativeLayout
+                android:id="@+id/edit_name"
                 style="@style/me_middle_entry"
                 android:layout_width="match_parent">
                 <LinearLayout
@@ -97,6 +99,7 @@
                     android:paddingEnd="10dp"
                     android:paddingRight="10dp">
                     <TextView
+                        android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_nickname"
@@ -120,6 +123,7 @@
             </RelativeLayout>
             <View style="@style/bg_line"/>
             <RelativeLayout
+                android:id="@+id/edit_phone"
                 style="@style/me_bt_entry"
                 android:layout_width="match_parent">
                 <LinearLayout
@@ -144,6 +148,7 @@
                     android:paddingEnd="10dp"
                     android:paddingRight="10dp">
                     <TextView
+                        android:id="@+id/user_phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_nickname"
@@ -174,6 +179,7 @@
             android:orientation="vertical"
             style="@style/me_entry_style">
             <RelativeLayout
+                android:id="@+id/edit_sex"
                 style="@style/me_top_entry"
                 android:layout_width="match_parent"
                 >
@@ -199,6 +205,7 @@
                     android:paddingEnd="10dp"
                     android:paddingRight="10dp">
                     <TextView
+                        android:id="@+id/user_sex"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_nickname"
@@ -222,6 +229,7 @@
             </RelativeLayout>
             <View style="@style/bg_line"/>
             <RelativeLayout
+                android:id="@+id/edit_age"
                 style="@style/me_middle_entry"
                 android:layout_width="match_parent"
                 >
@@ -247,6 +255,7 @@
                     android:paddingEnd="10dp"
                     android:paddingRight="10dp">
                     <TextView
+                        android:id="@+id/user_age"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_nickname"
@@ -270,6 +279,7 @@
             </RelativeLayout>
             <View style="@style/bg_line"/>
             <RelativeLayout
+                android:id="@+id/edit_career"
                 style="@style/me_bt_entry"
                 android:layout_width="match_parent">
                 <LinearLayout
@@ -294,6 +304,7 @@
                     android:paddingEnd="10dp"
                     android:paddingRight="10dp">
                     <TextView
+                        android:id="@+id/user_career"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/my_nickname"

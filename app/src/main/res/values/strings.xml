@@ -213,4 +213,18 @@
     <string name="load_fail">加载失败</string>
     <!--doc page-->
     <string name="page_not_ready">获取信息失败，请重新载入</string>
+
+
+    <!--edit user info-->
+    <string name="phoneset_unaval">暂不支持手机号修改</string>
+    <string name="set">设置</string>
+    <string name="cancel_set">取消</string>
+    <string name="set_age">请设置您的年龄</string>
+    <string name="set_name">请设置您的昵称</string>
+    <string name="choose_sex">请选择您的性别</string>
+    <string name="set_career">请设置您的职业</string>
+    <string-array name="sex_choice">
+        <item>男</item>
+        <item>女</item>
+    </string-array>
 </resources>
