@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/LewisPersonal.iml" filepath="$PROJECT_DIR$/LewisPersonal.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hidoc_new.iml" filepath="$PROJECT_DIR$/hidoc_new.iml" />
       <module fileurl="file://$PROJECT_DIR$/leanchatlib/leanchatlib.iml" filepath="$PROJECT_DIR$/leanchatlib/leanchatlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" filepath="$PROJECT_DIR$/multi-image-selector/multi-image-selector.iml" />
     </modules>

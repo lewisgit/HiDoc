@@ -81,7 +81,11 @@ public class DocPagePresenter implements GenPresenter {
                     public void done(Boolean data) {
                         if(data==null){followReady=false;}else{
                             isFollow=data;
-                            if(data){view.setFollow();}else{view.setUnfollow();}
+                            if(data){
+                                view.setFollow();
+                            }else{
+                                view.setUnfollow();
+                            }
                             followReady=true;
                         }
                     }

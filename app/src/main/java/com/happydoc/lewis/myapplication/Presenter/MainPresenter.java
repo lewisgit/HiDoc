@@ -19,6 +19,7 @@ import com.happydoc.lewis.myapplication.fragment.ChatListFragment;
 import com.happydoc.lewis.myapplication.fragment.CircleFragment;
 import com.happydoc.lewis.myapplication.fragment.DocListFragment;
 import com.happydoc.lewis.myapplication.fragment.DocPageFragment;
+import com.happydoc.lewis.myapplication.fragment.FollowFragment;
 import com.happydoc.lewis.myapplication.fragment.MeFragment;
 import com.happydoc.lewis.myapplication.fragment.MeInfoFragment;
 import com.happydoc.lewis.myapplication.fragment.SettingFragment;
@@ -146,6 +147,18 @@ public class MainPresenter {
         // fragmentInfo4.btnImg=(ImageView)view.getView(R.id.me_btn);
         //fragmentInfo4.btnText=(TextView) view.getView(R.id.me_btn_text);
         fragmentInfos.add(fragmentInfo8);
+
+        FragmentInfo fragmentInfo9=new FragmentInfo();
+        fragmentInfo9.fragment=new FollowFragment();
+        fragmentInfo9.fragmentId=view.activity.getString(R.string.myfollow_script);
+        fragmentInfo9.fragmentTitle=view.getString(R.string.myfollow_script);
+        fragmentInfo9.setIsShowReload(false);
+        // fragmentInfo1.lightBtn=R.id.docList_btn;
+        //fragmentInfo4.pressRes=R.drawable.me_press;
+        // fragmentInfo4.releaseRes=R.drawable.me;
+        // fragmentInfo4.btnImg=(ImageView)view.getView(R.id.me_btn);
+        //fragmentInfo4.btnText=(TextView) view.getView(R.id.me_btn_text);
+        fragmentInfos.add(fragmentInfo9);
     }
 
    // @Subscribe

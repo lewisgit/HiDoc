@@ -35,16 +35,17 @@ public class DocPageModel {
                     callBack.done(null);
                 } else {
                     // 当前用户喜欢的所有 Post 都保存在 results 里面了.
+                    Boolean temp=false;
                     for (AVObject objectDoc : results) {
                         if (objectDoc.getObjectId().equals(docId)) {
                             //followBtn.setBackgroundResource(R.drawable.corners_gray);
                             //isFollow=true;
                             //followBtn.setText(getString(R.string.unfollow));
-                            callBack.done(true);
+                            temp=true;
                             break;
                         }
                     }
-                    callBack.done(false);
+                    callBack.done(temp);
                 }
             }
         });

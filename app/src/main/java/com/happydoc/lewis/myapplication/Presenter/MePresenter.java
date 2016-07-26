@@ -19,15 +19,16 @@ public class MePresenter {
         initialize();
     }
     public void initialize(){
+        view.setView();
         model.getUserInfo(new MyCallBack<UserInfo>() {
             @Override
             public void done(UserInfo data) {
                 GlobalInfos.setUserInfo(data);
+                loadUserInfo();
             }
         });
-        view.setView();
         view.setOnClickListner();
-        loadUserInfo();
+
     }
     public void loadUserInfo(){
         view.showInfo(GlobalInfos.getUserInfo());

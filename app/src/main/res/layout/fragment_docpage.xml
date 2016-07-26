@@ -13,6 +13,7 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             >
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -33,11 +34,11 @@
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="25dp"
                     android:weightSum="3"
                     android:layout_marginTop="10dip"
                     android:layout_marginBottom="5dip"
-                    android:paddingBottom="5dip"
+
                     >
                     <TextView
                         android:layout_width="wrap_content"
@@ -57,7 +58,7 @@
                         android:layout_weight="1"/>
                     <Button
                         android:layout_width="60dip"
-                        android:layout_height="25dip"
+                        android:layout_height="match_parent"
                         android:textColor="@color/white"
                         android:background="@drawable/corners"
                         android:id="@+id/follow_doc"

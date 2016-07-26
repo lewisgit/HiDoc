@@ -81,7 +81,7 @@ public class MeView extends FragmentView{
         myFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.myfollow_script));
             }
         });
     }
