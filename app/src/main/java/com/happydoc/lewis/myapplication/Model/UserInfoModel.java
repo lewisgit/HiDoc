@@ -43,4 +43,6 @@ public class UserInfoModel {
             });
         }else{callBack.done(null);}
     }
+
+    public void editName(MyCallBack)
 }
