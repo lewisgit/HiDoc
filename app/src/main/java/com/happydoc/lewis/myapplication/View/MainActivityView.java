@@ -13,8 +13,10 @@ import android.widget.TextView;
 
 import com.happydoc.lewis.myapplication.App;
 import com.happydoc.lewis.myapplication.Bean.BtnInfo;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.R;
+import com.happydoc.lewis.myapplication.event.GoBackEvent;
 import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
 import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
@@ -41,7 +43,7 @@ public class MainActivityView extends MotherView implements ActivityView{
     public TextView titleView;
     //View
     public ImageView sendCircle;
-
+    ImageView backBtn;
     //currentBtn;
     BtnInfo curBtn;
 
@@ -54,14 +56,24 @@ public class MainActivityView extends MotherView implements ActivityView{
         for(FragmentInfo fragmentInfo:fragmentInfos){
             fragmentList.put(fragmentInfo.fragmentId, fragmentInfo);
         }
+        GlobalInfos.setFragmentList(fragmentList);
     }
     @Override
     public void showFragment(int id){
-        FragmentInfo fragmentInfo=fragmentList.get(activity.getString(id));
+        showFragment(getString(id));
+    }
+
+    public void showFragment(String id){
+        FragmentInfo fragmentInfo=fragmentList.get(id);
         Fragment fragment=fragmentInfo.fragment;
         FragmentTransaction fragmentTransaction=activity.getFragmentManager().beginTransaction();
         if(currentFragment!=fragment && fragment!=null){
             if(currentFragment!=null){
+                if(fragmentInfo.getGoBack()){backBtn.setVisibility(View.VISIBLE);}else{
+                    backBtn.setVisibility(View.INVISIBLE);
+                    GlobalInfos.clearBackStack();
+                }
+
             if(fragment.isAdded()) {
                 if(fragmentInfo.getIsShowReload())
                 ((GeneralFragment)fragment).getPresenter().refreshView();
@@ -178,9 +190,17 @@ public class MainActivityView extends MotherView implements ActivityView{
         };
         if(meBtn!=null) meBtn.setOnClickListener(listener4);
         meBtnTxt.setOnClickListener(listener4);
+
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivityEventBus.getEventBus().post(new GoBackEvent());
+            }
+        });
     }
     public void setView(){
         titleView=(TextView)getView(R.id.tobbar_script);
+        backBtn=(ImageView)getView(R.id.back_fragment);
     }
 
 

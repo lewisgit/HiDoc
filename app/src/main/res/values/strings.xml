@@ -81,6 +81,7 @@
     <string name="age_success">年龄修改成功</string>
     <string name="sex_success">性别修改成功</string>
     <string name="occuption_success">职业修改成功</string>
+    <string name="set_fail">设置失败</string>
     <!--设置-->
     <string name="clear_storage">清除缓存</string>
     <string name="notification">消息提醒</string>
@@ -227,4 +228,10 @@
         <item>男</item>
         <item>女</item>
     </string-array>
+
+    <!--circle send-->
+    <string name="info_empty">圈子不能为空</string>
+
+    <!--search-->
+    <string name="search_hint">请输入医生的姓名</string>
 </resources>

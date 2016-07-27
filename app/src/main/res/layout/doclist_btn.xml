@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        style="?android:attr/buttonBarStyle"
+        android:id="@+id/btns"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/doclist1"
+            android:background="@drawable/square_button"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/women_doc"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:layout_height="match_parent" />
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/doclist2"
+            android:text="@string/child_doc"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:background="@drawable/square_button_grey"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+    </LinearLayout>

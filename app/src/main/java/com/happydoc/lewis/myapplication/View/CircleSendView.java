@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.EdgeEffect;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.happydoc.lewis.myapplication.R;
@@ -24,6 +25,7 @@ public class CircleSendView extends MotherView {
     EditText editText;
     Button selectBtn;
     TextView sendBtn;
+    ImageView backBtn;
     public AdapaterCridImage adapterGrid;
 
     private static final int REQUEST_IMAGE = 2;
@@ -42,7 +44,15 @@ public class CircleSendView extends MotherView {
             public void onClick(View v) {eventBus.post(new SelectImgEvent(activity,REQUEST_IMAGE));}});
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {eventBus.post(new SendCircleEvent());
+            public void onClick(View v) {
+
+                eventBus.post(new SendCircleEvent());
+            }
+        });
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                activity.onBackPressed();
             }
         });
     }
@@ -51,6 +61,7 @@ public class CircleSendView extends MotherView {
         editText=(EditText)getView(R.id.circle_content);
         selectBtn=(Button) getView(R.id.select_img);
         sendBtn=(TextView)getView(R.id.send_circle);
+        backBtn=(ImageView)getView(R.id.back_circle);
     }
     public void setEventBus(EventBus eventBus){
         this.eventBus=eventBus;

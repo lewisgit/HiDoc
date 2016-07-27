@@ -5,26 +5,41 @@
     android:weightSum="7"
     android:padding="5dp"
     android:background="@drawable/doc_blue">
-    <ImageView
-        android:visibility="invisible"
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:gravity="center"
+        android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/back_fragment"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:src="@drawable/chat_common_base_header_back_btn"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
+        android:layout_height="match_parent">
     <TextView
         android:id="@+id/tobbar_script"
         android:visibility="visible"
         android:gravity="center"
-        android:layout_weight="5"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="@string/doclist_script"
         android:textSize="22sp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"/></LinearLayout>
+    <LinearLayout
+    android:layout_width="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+    android:layout_height="match_parent">
 <ImageView
     android:id="@+id/send_circle_btn"
-    android:layout_width="0dp"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-   android:layout_weight="1"
-    android:src="@android:drawable/ic_menu_camera"/>
+
+    android:src="@android:drawable/ic_menu_camera"/></LinearLayout>
 </LinearLayout>

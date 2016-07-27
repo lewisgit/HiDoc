@@ -36,7 +36,7 @@ public class FragmentDocListModel {
     }
     public void getDocListData(SearchCriteria criteria, final MyCallBack<List<DoctorInfo>> callBack){
         AVQuery<AVObject> query=new AVQuery<>("Doctor");
-        query.whereEqualTo("isChildMajor",criteria.mainPage);
+        query.whereEqualTo("isChildMajor",criteria.getIsChileMajor());
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {

@@ -8,28 +8,29 @@
         android:layout_height="50dp"
         android:background="@color/doc_blue">
         <ImageView
+            android:id="@+id/back_circle"
             android:layout_width="0dp"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:layout_height="40dp"
+            android:layout_height="30dp"
             android:src="@drawable/chat_common_base_header_back_btn"/>
         <TextView
             android:layout_width="0dp"
-            android:layout_weight="3"
+            android:layout_weight="5"
             android:layout_height="match_parent"
-            android:text="Circle Send"
+            android:text="@string/circle_scriptt"
             android:gravity="center"
             android:textColor="@color/white"
-            android:textSize="26sp"/>
+            android:textSize="24sp"/>
     <TextView
         android:id="@+id/send_circle"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="Send"
+        android:text="@string/status_send"
         android:textColor="@color/white"
-        android:textSize="22sp"
+        android:textSize="20sp"
         />
     </LinearLayout>
     <LinearLayout
@@ -37,17 +38,29 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:padding="5dp"
+            android:background="@drawable/bg_layout_shape">
     <EditText
+        android:layout_gravity="start"
         android:id="@+id/circle_content"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/blue_corners"/>
+        android:layout_height="match_parent"
+        android:textCursorDrawable="@null"
+        android:background="@color/white"
+        />
+        </LinearLayout>
     <Button
         android:layout_marginTop="20dp"
         android:id="@+id/select_img"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
+        android:text="@string/status_addImage"
+        android:textColor="@color/white"
+        android:textSize="22sp"
         android:background="@drawable/blue_corners"/>
 <GridView
     android:id="@+id/img_grid"

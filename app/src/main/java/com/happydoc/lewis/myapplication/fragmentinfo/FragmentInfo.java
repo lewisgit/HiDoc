@@ -17,6 +17,7 @@ public class FragmentInfo {
     public ImageView btnImg;
     public TextView btnText;
     public boolean isShowReload;
+    boolean goBack;
     public int titleStringId;
     public boolean backBtnEnable;
     public boolean searchBtnEnable;
@@ -26,5 +27,12 @@ public class FragmentInfo {
 
     public void setIsShowReload(boolean isShowReload) {
         this.isShowReload = isShowReload;
+    }
+
+    public void setGoBack(boolean goBack) {
+        this.goBack = goBack;
+    }
+    public boolean getGoBack() {
+        return this.goBack;
     }
 }

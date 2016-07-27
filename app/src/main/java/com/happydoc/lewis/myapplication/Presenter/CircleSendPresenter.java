@@ -31,6 +31,7 @@ public class CircleSendPresenter {
     CircleSendView view;
     CircleSendModel model;
     static int maxImgNum=9;
+    boolean isSending=false;
     public static int REQUEST_CODE=2;
     public static int SEND_SUCESS=1;
     public static int SEND_FAIL=0;
@@ -57,7 +58,18 @@ public class CircleSendPresenter {
 
   //  @Subscribe
     public void onEvent(SendCircleEvent event){
-        new Thread(runnable).start();
+        if(!isSending) {
+            isSending=true;
+            if(model.getSelectedImgs().size()>0 || view.getInputTxt().length()>0){
+            new Thread(runnable).start();
+            view.showMsg(R.string.sending);
+            }
+            else{
+                view.showMsg(R.string.info_empty);
+            isSending=false;}
+        }else{
+            view.showMsg(R.string.sending);
+        }
     }
 
     public void showSelectedImgs(ArrayList<String> arrayList){
@@ -104,6 +116,7 @@ public class CircleSendPresenter {
         Handler sendCompleteHandler=new Handler(){
             public void handleMessage(Message msg){
                 view.showMsg(msg.what);
+                isSending=false;
                 switch (msg.what){
                     case R.string.send_circle_success:
                         break;

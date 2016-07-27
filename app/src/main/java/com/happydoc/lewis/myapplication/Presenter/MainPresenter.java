@@ -7,12 +7,15 @@ import android.widget.TextView;
 
 import com.avoscloud.leanchatlib.activity.AVChatActivity;
 import com.avoscloud.leanchatlib.utils.Constants;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.CircleSendActivity;
 import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.Model.MainModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.MainActivityView;
 import com.happydoc.lewis.myapplication.event.ClickConversationEvent;
+import com.happydoc.lewis.myapplication.event.GoBackEvent;
+import com.happydoc.lewis.myapplication.event.SearchDocEvent;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
 import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
 import com.happydoc.lewis.myapplication.fragment.ChatListFragment;
@@ -25,6 +28,7 @@ import com.happydoc.lewis.myapplication.fragment.MeInfoFragment;
 import com.happydoc.lewis.myapplication.fragment.SettingFragment;
 import com.happydoc.lewis.myapplication.fragment.VideoFragment;
 import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
+import com.happydoc.lewis.myapplication.search.SearchCriteria;
 
 import de.greenrobot.event.EventBus;
 
@@ -63,6 +67,7 @@ public class MainPresenter {
         fragmentInfo1.fragment=new DocListFragment();
         fragmentInfo1.fragmentId=view.activity.getString(R.string.doclist_script);
        // fragmentInfo1.lightBtn=R.id.docList_btn;
+        fragmentInfo1.setGoBack(false);
         fragmentInfo1.fragmentTitle=view.getString(R.string.doclist_script);
         fragmentInfo1.pressRes=R.drawable.chat_press;
         fragmentInfo1.releaseRes=R.drawable.chat;
@@ -73,6 +78,7 @@ public class MainPresenter {
         FragmentInfo fragmentInfo2=new FragmentInfo();
         fragmentInfo2.fragment=new VideoFragment();
         fragmentInfo2.fragmentId=view.activity.getString(R.string.video_script);
+        fragmentInfo2.setGoBack(false);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         fragmentInfo2.pressRes=R.drawable.video_press;
         fragmentInfo2.releaseRes=R.drawable.video;
@@ -84,6 +90,7 @@ public class MainPresenter {
         FragmentInfo fragmentInfo3=new FragmentInfo();
         fragmentInfo3.fragment=new CircleFragment();
         fragmentInfo3.fragmentId=view.activity.getString(R.string.circle_scriptt);
+        fragmentInfo3.setGoBack(false);
         fragmentInfo3.fragmentTitle=view.getString(R.string.circle_scriptt);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         fragmentInfo3.pressRes=R.drawable.circle_press;
@@ -94,6 +101,7 @@ public class MainPresenter {
 
         FragmentInfo fragmentInfo4=new FragmentInfo();
         fragmentInfo4.fragment=new MeFragment();
+        fragmentInfo4.setGoBack(false);
         fragmentInfo4.fragmentId=view.activity.getString(R.string.me_script);
         fragmentInfo4.fragmentTitle=view.getString(R.string.me_script);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
@@ -107,6 +115,7 @@ public class MainPresenter {
         fragmentInfo5.fragment=new SettingFragment();
         fragmentInfo5.fragmentId=view.activity.getString(R.string.set_script);
         fragmentInfo5.fragmentTitle=view.getString(R.string.set_script);
+        fragmentInfo5.setGoBack(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
        // fragmentInfo4.releaseRes=R.drawable.me;
@@ -118,6 +127,7 @@ public class MainPresenter {
         fragmentInfo6.fragment=new MeInfoFragment();
         fragmentInfo6.fragmentId=view.activity.getString(R.string.info_script);
         fragmentInfo6.fragmentTitle=view.getString(R.string.info_script);
+        fragmentInfo6.setGoBack(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
         // fragmentInfo4.releaseRes=R.drawable.me;
@@ -129,6 +139,7 @@ public class MainPresenter {
         fragmentInfo7.fragment=new ChatListFragment();
         fragmentInfo7.fragmentId=view.activity.getString(R.string.chatlist_script);
         fragmentInfo7.fragmentTitle=view.getString(R.string.chatlist_script);
+        fragmentInfo7.setGoBack(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
         // fragmentInfo4.releaseRes=R.drawable.me;
@@ -141,6 +152,7 @@ public class MainPresenter {
         fragmentInfo8.fragmentId=view.activity.getString(R.string.docpage_script);
         fragmentInfo8.fragmentTitle=view.getString(R.string.docpage_script);
         fragmentInfo8.setIsShowReload(true);
+        fragmentInfo8.setGoBack(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
         // fragmentInfo4.releaseRes=R.drawable.me;
@@ -152,6 +164,7 @@ public class MainPresenter {
         fragmentInfo9.fragment=new FollowFragment();
         fragmentInfo9.fragmentId=view.activity.getString(R.string.myfollow_script);
         fragmentInfo9.fragmentTitle=view.getString(R.string.myfollow_script);
+        fragmentInfo9.setGoBack(true);
         fragmentInfo9.setIsShowReload(false);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
@@ -177,5 +190,13 @@ public class MainPresenter {
         intent.putExtra(Constants.CONVERSATION_ID, event.getConvId());
         view.activity.startActivity(intent);
     }
-
+    public void onEvent(GoBackEvent event){
+        List<FragmentInfo> list= GlobalInfos.getBackStack();
+        if (list.size() > 0) {
+            if (view.currentFragmentInfo.getGoBack()) {
+                view.showFragment(list.get(list.size()-1).fragmentId);
+                GlobalInfos.popBackStack();
+            }
+        }
+    }
 }

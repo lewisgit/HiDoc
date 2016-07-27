@@ -6,8 +6,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
+import com.happydoc.lewis.myapplication.Bean.UserInfo;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.event.EditUserInfoEvent;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import de.greenrobot.event.EventBus;
 
@@ -49,5 +52,34 @@ public class MeInfoView extends FragmentView {
         editPhone.setOnClickListener(listener);
         editName.setOnClickListener(listener);
         editCareer.setOnClickListener(listener);
+    }
+    public void showInfo(UserInfo info){
+        userAge.setText(info.getUserAge());
+        userCareer.setText(info.getUserCareer());
+        userPhone.setText(info.getPhoneNum());
+        userSex.setText(info.getUserSex());
+        userName.setText(info.getUserName());
+        ImageLoader.getInstance().displayImage(info.getUserUrl(),userAvatar, GlobalInfos.getDisplayImageOptions());
+
+    }
+
+    public TextView getUserAge() {
+        return userAge;
+    }
+
+    public TextView getUserName() {
+        return userName;
+    }
+
+    public TextView getUserSex() {
+        return userSex;
+    }
+
+    public TextView getUserCareer() {
+        return userCareer;
+    }
+
+    public ImageView getUserAvatar() {
+        return userAvatar;
     }
 }

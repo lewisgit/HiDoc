@@ -6,7 +6,7 @@
     tools:context=".MainActivity">
     <include layout="@layout/top_bar"
         android:id="@+id/top_bar"
-        android:layout_height="60dp"
+        android:layout_height="50dp"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
         >

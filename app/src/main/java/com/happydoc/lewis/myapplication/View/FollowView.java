@@ -52,6 +52,7 @@ public class FollowView extends FragmentView{
                 DoctorInfo doctorInfo=listViewAdapter.getItem(position);
                 GlobalInfos.setCurDocInfo(doctorInfo);
                 MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.docpage_script));
+                GlobalInfos.addBackStack(GlobalInfos.getFragmentList().get(fragment.getString(R.string.myfollow_script)));
             }
         });
     }

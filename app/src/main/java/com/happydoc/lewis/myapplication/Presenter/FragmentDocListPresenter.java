@@ -8,7 +8,9 @@ import com.happydoc.lewis.myapplication.Model.FragmentDocListModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.FragmentDocListView;
 import com.happydoc.lewis.myapplication.account.DoctorInfo;
+import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
 import com.happydoc.lewis.myapplication.event.MyCallBack;
+import com.happydoc.lewis.myapplication.event.SearchDocEvent;
 import com.happydoc.lewis.myapplication.fragmentinfo.CarouselItem;
 import com.happydoc.lewis.myapplication.scrollimage.image.ImageScroll;
 import com.happydoc.lewis.myapplication.search.SearchCriteria;
@@ -26,6 +28,7 @@ public class FragmentDocListPresenter {
     public FragmentDocListPresenter(FragmentDocListView view,FragmentDocListModel model){
         this.view=view;
         this.model=model;
+        MainActivityEventBus.getEventBus().register(this);
         initialize();
     }
     public void initialize(){
@@ -36,12 +39,23 @@ public class FragmentDocListPresenter {
                 view.initScrollData(data);
             }
         });
-        model.getDocListData(new SearchCriteria(true), new MyCallBack<List<DoctorInfo>>() {
+        SearchCriteria criteria=new SearchCriteria();
+        criteria.setChildMajor(false);
+        model.getDocListData(criteria, new MyCallBack<List<DoctorInfo>>() {
             @Override
-            public void done(List<DoctorInfo> data) {view.setListViewData(data);
+            public void done(List<DoctorInfo> data) {view.setOnDoc1Btn();view.setListViewData(data);
             }
         });
         view.setListVIewItemClickListener();
     }
 
+    public void onEvent(SearchDocEvent event){
+        if(event.getCriteria().getIsChileMajor()){view.setOnDoc2Btn();}else{view.setOnDoc1Btn();}
+        model.getDocListData(event.getCriteria(), new MyCallBack<List<DoctorInfo>>() {
+            @Override
+            public void done(List<DoctorInfo> data) {
+                view.setListViewData(data);
+            }
+        });
+    }
 }

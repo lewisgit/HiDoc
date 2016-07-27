@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:background="@color/doc_blue"
+        android:layout_width="match_parent"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:layout_height="50dp">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:src="@drawable/chat_common_base_header_back_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:background="@drawable/bg_layout_shape"
+            android:layout_height="match_parent">
+            <EditText
+                android:background="@color/white"
+                android:singleLine="true"
+                android:hint="@string/search_hint"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/lv_search_tips_bg"/>
+        </LinearLayout>
+    </LinearLayout>
+<ListView
+    android:id="@+id/search_result"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+</LinearLayout>

@@ -63,25 +63,29 @@ public class MeView extends FragmentView{
             @Override
             public void onClick(View v) {
                 MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.info_script));
-                showMsg("test");
+                GlobalInfos.addBackStack(GlobalInfos.getFragmentList().get(fragment.getString(R.string.me_script)));
+                //showMsg("test");
             }
         });
         query.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.chatlist_script));
+                GlobalInfos.addBackStack(GlobalInfos.getFragmentList().get(fragment.getString(R.string.me_script)));
             }
         });
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.set_script));
+                GlobalInfos.addBackStack(GlobalInfos.getFragmentList().get(fragment.getString(R.string.me_script)));
             }
         });
         myFollow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MainActivityEventBus.getEventBus().post(new ShowFragmentEvent(R.string.myfollow_script));
+                GlobalInfos.addBackStack(GlobalInfos.getFragmentList().get(fragment.getString(R.string.me_script)));
             }
         });
     }
