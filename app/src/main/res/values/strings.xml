@@ -191,6 +191,7 @@
     <string name="chatlist_script">我的提问</string>
     <string name="docpage_script">医生主页</string>
     <string name="myfollow_script">我的关注</string>
+    <string name="search_script">搜索</string>
 
     <string name="signout">退出当前账户</string>
 
@@ -234,4 +235,7 @@
 
     <!--search-->
     <string name="search_hint">请输入医生的姓名</string>
+    <string name="search">搜索</string>
+    <string name="no_search_reasult">没有搜索到医生</string>
+
 </resources>

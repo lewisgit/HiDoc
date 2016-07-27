@@ -17,6 +17,7 @@ public class FragmentInfo {
     public ImageView btnImg;
     public TextView btnText;
     public boolean isShowReload;
+    public boolean showTopBar;
     boolean goBack;
     public int titleStringId;
     public boolean backBtnEnable;
@@ -34,5 +35,12 @@ public class FragmentInfo {
     }
     public boolean getGoBack() {
         return this.goBack;
+    }
+
+    public void setShowTopBar(boolean showTopBar) {
+        this.showTopBar = showTopBar;
+    }
+    public boolean getShowTopBar(){
+        return this.showTopBar;
     }
 }

@@ -8,6 +8,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -41,7 +42,11 @@ public class MainActivityView extends MotherView implements ActivityView{
     public int fragmentRegionId;
     public EventBus eventBus;
     public TextView titleView;
+
+    public LinearLayout topBar;
+
     //View
+    public ImageView searchBtn;
     public ImageView sendCircle;
     ImageView backBtn;
     //currentBtn;
@@ -68,6 +73,11 @@ public class MainActivityView extends MotherView implements ActivityView{
         Fragment fragment=fragmentInfo.fragment;
         FragmentTransaction fragmentTransaction=activity.getFragmentManager().beginTransaction();
         if(currentFragment!=fragment && fragment!=null){
+            if(fragmentInfo.getShowTopBar()==true){
+                topBar.setVisibility(View.VISIBLE);
+            }else{
+                topBar.setVisibility(View.GONE);
+            }
             if(currentFragment!=null){
                 if(fragmentInfo.getGoBack()){backBtn.setVisibility(View.VISIBLE);}else{
                     backBtn.setVisibility(View.INVISIBLE);
@@ -133,7 +143,18 @@ public class MainActivityView extends MotherView implements ActivityView{
     }
 
     public void setBtnOnClickListener(){
+        topBar=(LinearLayout)getView(R.id.top_bar);
 
+
+        searchBtn=(ImageView) getView(R.id.search_btn);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                GlobalInfos.addBackStack(currentFragmentInfo);
+                eventBus.post(new ShowFragmentEvent(R.string.search_script));
+
+            }
+        });
 
         sendCircle=(ImageView) getView(R.id.send_circle_btn);
         sendCircle.setOnClickListener(new View.OnClickListener() {
