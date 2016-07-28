@@ -33,17 +33,24 @@ import java.util.List;
 /**
  * Created by Lewis on 2016/7/24.
  */
-public class ChatListPresenter {
+public class ChatListPresenter implements  GenPresenter{
     private ChatListView view;
     private ChatListModel model;
     private ConversationManager conversationManager;
     public ChatListPresenter(ChatListView view,ChatListModel model){
         this.view=view;
         this.model=model;
-        initialize();
+        initView();
         EventBus.getDefault().register(this);
     }
-    public void initialize(){
+
+    @Override
+    public void refreshView() {
+        initChatList();
+    }
+
+    @Override
+    public void initView(){
         conversationManager=ConversationManager.getInstance();
         view.setView();
         view.setChatListAdaper();
@@ -120,7 +127,18 @@ public class ChatListPresenter {
         return sortedList;
     }
     //@Subscribe
-    public void onEvent(ConversationItemClickEvent clickEvent) {
-        MainActivityEventBus.getEventBus().post(new ClickConversationEvent(clickEvent.conversationId));
+    public void onEvent(final ConversationItemClickEvent clickEvent) {
+        view.showMsg(R.string.query_conv);
+        model.getConvRemainTime(clickEvent.conversationId, new MyCallBack<Exception>() {
+            @Override
+            public void done(Exception data) {
+                if(data==null){
+                    MainActivityEventBus.getEventBus().post(new ClickConversationEvent(clickEvent.conversationId));
+                }else{
+                    view.showMsg(R.string.conv_end);
+                }
+            }
+        });
+
     }
 }

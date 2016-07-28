@@ -7,8 +7,11 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
+import com.avos.avoscloud.FindCallback;
 import com.avoscloud.leanchatlib.activity.AVChatActivity;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.happydoc.lewis.myapplication.Bean.ConsultInfo;
@@ -25,6 +28,9 @@ import com.happydoc.lewis.myapplication.utils.PayResult;
 import com.happydoc.lewis.myapplication.utils.payUtils;
 
 import android.os.Handler;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.LogRecord;
 
 import de.greenrobot.event.EventBus;
@@ -54,12 +60,17 @@ public class DocPagePresenter implements GenPresenter {
         view.setConBtn(ConsultInfo.INVALID);
         followReady=false;
         view.setUnfollow();
+        view.initCommentList();
+        view.setCommentList(new ArrayList<AVObject>());
         loadDocInfo();
         if(doctorInfo!=null){
             if(doctorInfo.getDocObject()!=null){
                 setDocUserObj();
                 getFollowInfo();
                 getConsultInfo();
+                String id=doctorInfo.getDocObject().getString("DoctorID");
+                if(id!=null)
+                    getCommentList(id);
             }
         }
         view.setOnClickListener();
@@ -105,6 +116,22 @@ public class DocPagePresenter implements GenPresenter {
              }
          });
     }
+
+
+    public void getCommentList(String id){
+        AVQuery<AVObject> query=new AVQuery<>("Comment");
+        query.whereEqualTo("DoctorID", id);
+        query.findInBackground(new FindCallback<AVObject>() {
+            @Override
+            public void done(List<AVObject> list, AVException e) {
+                if (e == null) {
+                    view.setCommentList(list);
+                }
+            }
+        });
+    }
+
+
 
     public void onEvent(FollowEvent event){
         if(followReady && doctorInfo.getDocObject()!=null){

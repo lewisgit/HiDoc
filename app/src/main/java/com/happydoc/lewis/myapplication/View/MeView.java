@@ -44,10 +44,12 @@ public class MeView extends FragmentView{
     }
 
     public void showInfo(UserInfo userInfo){
-        if(userInfo.getUserName()!=null)nickName.setText(userInfo.getUserName());
-        if(userInfo.getPhoneNum()!=null)phoneNum.setText(userInfo.getPhoneNum());
-        if(userInfo.getUserUrl()!=null) ImageLoader.getInstance().displayImage(userInfo.getUserUrl(),profile_image, GlobalInfos.getDisplayImageOptions());
-
+        if(userInfo!=null) {
+            if (userInfo.getUserName() != null) nickName.setText(userInfo.getUserName());
+            if (userInfo.getPhoneNum() != null) phoneNum.setText(userInfo.getPhoneNum());
+            if (userInfo.getUserUrl() != null)
+                ImageLoader.getInstance().displayImage(userInfo.getUserUrl(), profile_image, GlobalInfos.getDisplayImageOptions());
+        }
     }
     public void setView(){
         profile_image=(CircleImageView)getView(R.id.profile_image);

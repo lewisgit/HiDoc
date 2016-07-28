@@ -105,7 +105,11 @@ public class ConversationItemHolder extends CommonViewHolder {
       itemView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
+
+
           EventBus.getDefault().post(new ConversationItemClickEvent(room.getConversationId()));
+
+
         }
       });
     }

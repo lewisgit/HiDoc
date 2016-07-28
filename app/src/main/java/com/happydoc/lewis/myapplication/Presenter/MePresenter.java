@@ -9,16 +9,22 @@ import com.happydoc.lewis.myapplication.event.MyCallBack;
 /**
  * Created by Lewis on 2016/7/23.
  */
-public class MePresenter {
+public class MePresenter implements GenPresenter{
     private MeView view;
     private UserInfoModel model;
     //private UserInfo userInfo;
     public MePresenter(MeView view,UserInfoModel model){
         this.view=view;
         this.model=model;
-        initialize();
+        initView();
     }
-    public void initialize(){
+
+    @Override
+    public void refreshView() {
+        loadUserInfo();
+    }
+    @Override
+    public void initView(){
         view.setView();
         model.getUserInfo(new MyCallBack<UserInfo>() {
             @Override

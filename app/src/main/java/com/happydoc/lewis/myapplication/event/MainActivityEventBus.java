@@ -7,10 +7,12 @@ import de.greenrobot.event.EventBus;
  */
 public class MainActivityEventBus{
     static private EventBus eventBus;
-    public static void setEventBus(EventBus eventBus) {
+    /*public static void setEventBus(EventBus eventBus) {
         MainActivityEventBus.eventBus = eventBus;
-    }
+    }*/
     public static EventBus getEventBus() {
+        if(eventBus==null)
+            eventBus=new EventBus();
         return eventBus;
     }
 }

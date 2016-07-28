@@ -5,18 +5,23 @@ import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVUser;
 import com.avoscloud.leanchatlib.activity.AVChatActivity;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.CircleSendActivity;
+import com.happydoc.lewis.myapplication.LoginActivity;
 import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.Model.MainModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.MainActivityView;
 import com.happydoc.lewis.myapplication.event.ClickConversationEvent;
 import com.happydoc.lewis.myapplication.event.GoBackEvent;
+import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
+import com.happydoc.lewis.myapplication.event.RefreshEvent;
 import com.happydoc.lewis.myapplication.event.SearchDocEvent;
 import com.happydoc.lewis.myapplication.event.ShowFragmentEvent;
+import com.happydoc.lewis.myapplication.event.SignOutEvent;
 import com.happydoc.lewis.myapplication.event.StartSendCircleEvent;
 import com.happydoc.lewis.myapplication.fragment.ChatListFragment;
 import com.happydoc.lewis.myapplication.fragment.CircleFragment;
@@ -51,8 +56,8 @@ public class MainPresenter {
     }
     public void initialize(){
         view.setView();
-        view.setEventBus(new EventBus());
-        view.getEventBus().register(this);
+        view.setEventBus();
+        MainActivityEventBus.getEventBus().register(this);
         view.setBtnOnClickListener();
         view.setFragmentRegionId(R.id.fragment_region);
         setFragmentInfoList();
@@ -109,6 +114,7 @@ public class MainPresenter {
         fragmentInfo4.fragmentId=view.activity.getString(R.string.me_script);
         fragmentInfo4.fragmentTitle=view.getString(R.string.me_script);
         fragmentInfo4.setShowTopBar(true);
+        fragmentInfo4.setIsShowReload(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         fragmentInfo4.pressRes=R.drawable.me_press;
         fragmentInfo4.releaseRes=R.drawable.me;
@@ -135,6 +141,7 @@ public class MainPresenter {
         fragmentInfo6.fragmentTitle=view.getString(R.string.info_script);
         fragmentInfo6.setGoBack(true);
         fragmentInfo6.setShowTopBar(true);
+        fragmentInfo6.setIsShowReload(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
         // fragmentInfo4.releaseRes=R.drawable.me;
@@ -148,6 +155,7 @@ public class MainPresenter {
         fragmentInfo7.fragmentTitle=view.getString(R.string.chatlist_script);
         fragmentInfo7.setGoBack(true);
         fragmentInfo7.setShowTopBar(true);
+        fragmentInfo7.setIsShowReload(true);
         // fragmentInfo1.lightBtn=R.id.docList_btn;
         //fragmentInfo4.pressRes=R.drawable.me_press;
         // fragmentInfo4.releaseRes=R.drawable.me;
@@ -222,5 +230,14 @@ public class MainPresenter {
                 GlobalInfos.popBackStack();
             }
         }
+    }
+    public void onEvent(SignOutEvent event){
+        AVUser.logOut();
+        Intent intent=new Intent(view.activity, LoginActivity.class);
+        view.activity.startActivity(intent);
+        view.activity.finish();
+    }
+    public void onEvent(RefreshEvent event){
+        view.refreshView();
     }
 }

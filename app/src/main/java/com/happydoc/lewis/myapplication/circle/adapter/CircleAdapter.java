@@ -13,9 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.avos.avoscloud.AVFile;
+import com.avos.avoscloud.AVUser;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.happydoc.lewis.myapplication.App;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.atts.ImageSize;
 
@@ -38,6 +41,7 @@ import com.happydoc.lewis.myapplication.circle.widgets.SnsPopupWindow;
 import com.happydoc.lewis.myapplication.circle.widgets.dialog.CommentDialog;
 import com.happydoc.lewis.myapplication.circle.widgets.videolist.model.VideoLoadMvpView;
 import com.happydoc.lewis.myapplication.circle.widgets.videolist.widget.TextureVideoView;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import java.util.List;
 
@@ -106,6 +110,12 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
 
         if(getItemViewType(position)==TYPE_HEAD){
             HeaderViewHolder holder = (HeaderViewHolder) viewHolder;
+            AVUser user=AVUser.getCurrentUser();
+            if(user!=null){AVFile file=user.getAVFile("Photo");
+                String url=file==null?null:file.getUrl();
+                ImageLoader.getInstance().displayImage(url,holder.circleAvatar, GlobalInfos.getDisplayImageOptions());
+            }
+
         }else{
 
             final int circlePosition = position - HEADVIEW_SIZE;
@@ -272,9 +282,12 @@ public class CircleAdapter extends BaseRecycleViewAdapter {
     }
 
     public class HeaderViewHolder extends RecyclerView.ViewHolder{
-
+        public ImageView circleBg;
+        public ImageView circleAvatar;
         public HeaderViewHolder(View itemView) {
             super(itemView);
+            circleBg=(ImageView)itemView.findViewById(R.id.circle_bg);
+            circleAvatar=(ImageView)itemView.findViewById(R.id.circle_avatar);
         }
     }
 

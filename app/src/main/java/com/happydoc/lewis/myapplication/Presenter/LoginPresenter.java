@@ -95,6 +95,7 @@ public class LoginPresenter {
                 loginView.showMsg(R.string.invalid_user);
                 break;
             case isDocUser:
+                AVUser.logOut();
                 loginView.showMsg(R.string.is_doc_account);
                 break;
             case isUsernotVerify:

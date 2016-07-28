@@ -28,10 +28,10 @@ import javax.security.auth.callback.Callback;
 public class FragmentDocListModel {
     public void getScrollImageData(MyCallBack<List<CarouselItem>> callBack){
         List<CarouselItem> list=new ArrayList<>();
-        list.add(new CarouselItem("指引你的瑜伽资深大师的指引你的瑜伽资","http://www.jianyumei.com.cn/ueditor/net/upload/2015-01-15/e9af161b-133d-4017-989a-624e6771e158.jpg"));
-        list.add(new CarouselItem("指引你的瑜伽资深大师的指引你的瑜伽资","http://www.jianyumei.com.cn/ueditor/net/upload/2015-01-15/e9af161b-133d-4017-989a-624e6771e158.jpg"));
-        list.add(new CarouselItem("指引你的瑜伽资深大师的指引你的瑜伽资","http://www.jianyumei.com.cn/ueditor/net/upload/2015-01-15/e9af161b-133d-4017-989a-624e6771e158.jpg"));
-        list.add(new CarouselItem("指引你的瑜伽资深大师的指引你的瑜伽资","http://www.jianyumei.com.cn/ueditor/net/upload/2015-01-15/e9af161b-133d-4017-989a-624e6771e158.jpg"));
+        list.add(new CarouselItem("苍茫的天涯的是我的爱","http://ac-ph14qk1o.clouddn.com/98f293029d700a81.jpg"));
+        list.add(new CarouselItem("空山新雨后冻住不许走","http://ac-ph14qk1o.clouddn.com/6036d2d2b2e138db.jpg"));
+        list.add(new CarouselItem("飞流直下三千尺不如自挂东南枝","http://ac-ph14qk1o.clouddn.com/8525c1ae1330dc35.jpg"));
+        //list.add(new CarouselItem("指引你的瑜伽资深大师的指引你的瑜伽资","http://www.jianyumei.com.cn/ueditor/net/upload/2015-01-15/e9af161b-133d-4017-989a-624e6771e158.jpg"));
         callBack.done(list);
     }
     public void getDocListData(SearchCriteria criteria, final MyCallBack<List<DoctorInfo>> callBack){

@@ -129,9 +129,9 @@ public class MainActivityView extends MotherView implements ActivityView{
     public void setFragmentRegionId(int id){
         fragmentRegionId=id;
     }
-    public void setEventBus(EventBus eventBus){
-        this.eventBus=eventBus;
-        MainActivityEventBus.setEventBus(eventBus);
+    public void setEventBus(){
+        this.eventBus=MainActivityEventBus.getEventBus();
+       // MainActivityEventBus.setEventBus(eventBus);
         //MainActivity mainActivity=(MainActivity)activity;
         //mainActivity.setEventBus(eventBus);
     }
@@ -224,5 +224,10 @@ public class MainActivityView extends MotherView implements ActivityView{
         backBtn=(ImageView)getView(R.id.back_fragment);
     }
 
-
+    public void refreshView(){
+        if(currentFragment!=null && currentFragmentInfo!=null){
+            if(currentFragmentInfo.getIsShowReload())
+                ((GeneralFragment)currentFragment).getPresenter().refreshView();
+        }
+    }
 }

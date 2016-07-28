@@ -27,7 +27,7 @@ import me.nereo.multi_image_selector.MultiImageSelector;
 /**
  * Created by Lewis on 2016/7/23.
  */
-public class MeInfoFragment extends Fragment {
+public class MeInfoFragment extends GeneralFragment {
     MeInfoPresenter presenter;
     public static final int RESULT_OK           = -1;
     ArrayList<String> mSelectPath=new ArrayList<>();
@@ -38,6 +38,7 @@ public class MeInfoFragment extends Fragment {
         MeInfoView view=new MeInfoView(this,myView);
         UserInfoModel model=new UserInfoModel();
         presenter=new MeInfoPresenter(view,model);
+        setPresenter(presenter);
         return myView;
     }
     @Override

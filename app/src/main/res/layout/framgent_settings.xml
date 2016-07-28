@@ -65,7 +65,7 @@
             <View style="@style/bg_line"/>
             <RelativeLayout
                 style="@style/me_bt_entry"
-                android:id="@+id/set_not"
+                android:id="@+id/set_notify"
                 android:layout_width="match_parent"
                 >
                 <LinearLayout

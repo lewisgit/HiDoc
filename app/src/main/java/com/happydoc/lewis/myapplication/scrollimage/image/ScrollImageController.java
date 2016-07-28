@@ -72,21 +72,21 @@ public class ScrollImageController {
                 RelativeLayout.LayoutParams lp2;
                 //imageView.setImageDrawable(activity.getResources().getDrawable(R.drawable.s1));
                 ImageLoader.getInstance().displayImage(list.get(i).getImageUrl(),imageView);
-                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setScaleType(ImageView.ScaleType.FIT_XY);
                 relativeLayout.addView(imageView, lp1);
                 textView.setText("   " + list.get(i).getTitle() + "   ");
                 if (list.get(i).getTitle() .getBytes().length > 70) {
                     lp2 = new RelativeLayout.LayoutParams(
                             ViewGroup.LayoutParams.MATCH_PARENT,
-                            Convert.dip2px(activity, 68));
-                    lp2.addRule(RelativeLayout.BELOW, 1);
-                    lp2.setMargins(0, Convert.dip2px(activity, -48), 0, 0);
-                } else {
-                    lp2 = new RelativeLayout.LayoutParams(
-                            ViewGroup.LayoutParams.MATCH_PARENT,
                             Convert.dip2px(activity, 58));
                     lp2.addRule(RelativeLayout.BELOW, 1);
                     lp2.setMargins(0, Convert.dip2px(activity, -38), 0, 0);
+                } else {
+                    lp2 = new RelativeLayout.LayoutParams(
+                            ViewGroup.LayoutParams.MATCH_PARENT,
+                            Convert.dip2px(activity, 48));
+                    lp2.addRule(RelativeLayout.BELOW, 1);
+                    lp2.setMargins(0, Convert.dip2px(activity, -28), 0, 0);
                 }
                 relativeLayout.addView(textView, lp2);
                 listViewsImage.add(relativeLayout);

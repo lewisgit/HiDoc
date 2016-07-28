@@ -48,8 +48,7 @@ public class CircleFragment extends Fragment implements CircleContract.View{
     private CircleAdapter circleAdapter;
     private LinearLayout edittextbody;
     private EditText editText;
-    private ImageView sendIv;
-
+    private ImageView sendIv,avatar,circleBg;
     private int screenHeight;
     private int editTextBodyHeight;
     private int currentKeyboardH;
@@ -69,13 +68,14 @@ public class CircleFragment extends Fragment implements CircleContract.View{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View myView=inflater.inflate(R.layout.fragment_circle,container,false);
+        final  View myView=inflater.inflate(R.layout.fragment_circle,container,false);
         presenter = new CirclePresenter(this);
-        initView(myView);
+
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
+                initView(myView);
                 presenter.loadData(TYPE_PULLREFRESH,0);
             }
         },100);
@@ -92,6 +92,7 @@ public class CircleFragment extends Fragment implements CircleContract.View{
     @SuppressLint({ "ClickableViewAccessibility", "InlinedApi" })
     public void initView(View v){
         initUploadDialog();
+
 
         recyclerView = (SuperRecyclerView) v.findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(getActivity());//this

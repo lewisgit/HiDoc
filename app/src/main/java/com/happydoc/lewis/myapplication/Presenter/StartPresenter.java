@@ -36,6 +36,7 @@ public class StartPresenter {
                         loginVerify((AVUser) avObject);
                     } else {
                         Log.d("Current User Sync Error", e.getMessage());
+                        startView.loginSuccess();//when network error
                     }
                 }
             });
@@ -63,6 +64,7 @@ public class StartPresenter {
                 startView.loginNeeded();
                 break;
             case isDocUser:
+                AVUser.logOut();
                 startView.showMsg(R.string.is_doc_account);
                 startView.loginNeeded();
                 break;

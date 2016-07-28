@@ -6,31 +6,27 @@
     android:layout_height="245dp">
 
     <ImageView
+        android:id="@+id/circle_bg"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:src="@drawable/icon_head_bg"
+        android:src="@drawable/bg"
         android:scaleType="centerCrop"
         />
-
+<LinearLayout
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginBottom="15dp"
+    android:layout_marginRight="25dp"
+    android:layout_width="75dp"
+    android:gravity="center"
+    android:background="@drawable/square_bg_white"
+    android:layout_height="75dp">
     <ImageView
+        android:id="@+id/circle_avatar"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/icon_head"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginRight="25dp"
         />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginRight="105dp"
-        android:layout_marginBottom="55dp"
-        android:textSize="16sp"
-        android:textColor="@color/white"
-        android:text="自己"/>
+</LinearLayout>
 
 </RelativeLayout>

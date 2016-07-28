@@ -12,5 +12,10 @@ public class SetPresenter {
     public SetPresenter(SetView view,SetModel model){
         this.view=view;
         this.model=model;
+        initView();
+    }
+    public void initView(){
+        view.setView();
+        view.setBtnListener();
     }
 }

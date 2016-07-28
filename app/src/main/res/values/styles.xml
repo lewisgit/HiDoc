@@ -83,4 +83,31 @@
         <item name="android:background">@drawable/single_layout_selector</item>
         <item name="android:layout_height">60dp</item>
     </style>
+
+
+    <!-- 最外层样式 -->
+    <style name="wrap_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:padding">1px</item>
+        <item name="android:background">@drawable/bg_layout_shape</item>
+
+    </style>
+
+
+
+    <style name="myAppTheme" parent="Theme.AppCompat.Light">
+        <!-- Customize your theme here. -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimary">@color/doc_blue</item>
+        <item name="colorPrimaryDark">@color/doc_blue</item>
+        <item name="colorAccent">@color/doc_blue</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:editTextStyle">@style/EditText</item>
+    </style>
 </resources>

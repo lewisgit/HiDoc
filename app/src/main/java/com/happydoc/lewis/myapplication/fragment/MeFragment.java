@@ -15,7 +15,7 @@ import com.happydoc.lewis.myapplication.fragmentinfo.FragmentInfo;
 /**
  * Created by Lewis on 2016/7/23.
  */
-public class MeFragment extends Fragment {
+public class MeFragment extends GeneralFragment {
     //private MeView view;
     private MePresenter presenter;
     //private UserInfoModel model;
@@ -26,6 +26,7 @@ public class MeFragment extends Fragment {
         MeView view=new MeView(this,myView);
         UserInfoModel model=new UserInfoModel();
         presenter=new MePresenter(view,model);
+        setPresenter(presenter);
         return myView;
     }
 }

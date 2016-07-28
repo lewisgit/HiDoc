@@ -2,18 +2,25 @@ package com.happydoc.lewis.myapplication.View;
 
 import android.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVObject;
+import com.avoscloud.leanchatlib.adapter.CommonListAdapter;
 import com.happydoc.lewis.myapplication.Bean.ConsultInfo;
 import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
+import com.happydoc.lewis.myapplication.ListViewHolder.CommenItemHolder;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.account.DoctorInfo;
 import com.happydoc.lewis.myapplication.event.Event;
 import com.happydoc.lewis.myapplication.event.FollowEvent;
 import com.happydoc.lewis.myapplication.event.StartConsultEvent;
 import com.nostra13.universalimageloader.core.ImageLoader;
+
+import java.util.List;
 
 import de.greenrobot.event.EventBus;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -25,6 +32,8 @@ public class FragmentDocPageView extends FragmentView {
     Button followBtn,onceBtn,weekBtn;
     TextView docName,docTitle,docHosp,docIntro,doc1price,doc7price;
     CircleImageView circleImageView;
+    RecyclerView myRecylerView;
+    CommonListAdapter<AVObject> commentListAdapter;
     public FragmentDocPageView(Fragment fragment,View view){
         super(fragment,view);
     }
@@ -45,7 +54,7 @@ public class FragmentDocPageView extends FragmentView {
         //image
         circleImageView=(CircleImageView)getView(R.id.profile_image);
 
-
+        myRecylerView=(RecyclerView)getView(R.id.comment_list);
     }
     public void showDocInfo(DoctorInfo doctorInfo){
         if(docName!=null) docName.setText(doctorInfo.getName());
@@ -123,5 +132,14 @@ public class FragmentDocPageView extends FragmentView {
                 EventBus.getDefault().post(event);
             }
         });
+    }
+    public void initCommentList(){
+        myRecylerView.setLayoutManager(new LinearLayoutManager(fragment.getActivity()));
+        commentListAdapter=new CommonListAdapter<AVObject>(CommenItemHolder.class);
+        myRecylerView.setAdapter(commentListAdapter);
+    }
+    public void setCommentList(List<AVObject> list){
+        commentListAdapter.setDataList(list);
+        commentListAdapter.notifyDataSetChanged();
     }
 }

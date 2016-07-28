@@ -21,7 +21,7 @@ public class LoginModel {
     public UserValidation isValidUser(AVUser user){
         if(user!=null)
         {
-            if(!user.getBoolean("isDocter")){//if null?
+            if(!user.getBoolean("isDoctor")){//if null?
                 if(user.isMobilePhoneVerified()){
                     return new UserValidation(true, AccountCode.validUser);
                 }

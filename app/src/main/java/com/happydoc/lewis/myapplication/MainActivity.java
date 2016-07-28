@@ -16,6 +16,8 @@ import com.happydoc.lewis.myapplication.Presenter.MainPresenter;
 import com.happydoc.lewis.myapplication.View.MainActivityView;
 import com.happydoc.lewis.myapplication.account.CustomUserProvider;
 import com.happydoc.lewis.myapplication.event.Event;
+import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
+import com.happydoc.lewis.myapplication.event.RefreshEvent;
 
 import de.greenrobot.event.EventBus;
 
@@ -23,7 +25,7 @@ import de.greenrobot.event.EventBus;
  * Created by Lewis on 2016/7/14.
  */
 public class MainActivity extends AppCompatActivity {
-
+    long lastBackTime,BACK_INTERVAL=1000;
     //public EventBus eventBus;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
                 if (null != e) {
                     showMsg(e.getMessage());
                 }else{
-                    showMsg("咨询系统初始化成功");
+                    showMsg(getString(R.string.init_consult_success));
                 }
             }
         });
@@ -63,4 +65,21 @@ public class MainActivity extends AppCompatActivity {
     public EventBus getEventBus() {
         return eventBus;
     }*/
+@Override
+public void onBackPressed() {
+    long currentTime = System.currentTimeMillis();
+    if (currentTime - lastBackTime < BACK_INTERVAL) {
+        EventBus.clearCaches();//try to solve the Presenter not recycled problem
+        super.onBackPressed();
+    } else {
+        Toast.makeText(getApplicationContext(),getString(R.string.double_click_quit),Toast.LENGTH_SHORT).show();
+    }
+    lastBackTime = currentTime;
+}
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MainActivityEventBus.getEventBus().post(new RefreshEvent());
+    }
 }

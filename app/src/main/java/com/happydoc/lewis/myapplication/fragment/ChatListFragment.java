@@ -14,7 +14,7 @@ import com.happydoc.lewis.myapplication.View.ChatListView;
 /**
  * Created by Lewis on 2016/7/24.
  */
-public class ChatListFragment extends Fragment {
+public class ChatListFragment extends GeneralFragment {
     private ChatListPresenter presenter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,6 +23,7 @@ public class ChatListFragment extends Fragment {
         ChatListView view=new ChatListView(this,myView);
         ChatListModel model=new ChatListModel();
         presenter=new ChatListPresenter(view,model);
+        setPresenter(presenter);
         return myView;
     }
 }

@@ -37,7 +37,7 @@ import me.nereo.multi_image_selector.bean.Image;
 /**
  * Created by Lewis on 2016/7/23.
  */
-public class MeInfoPresenter {
+public class MeInfoPresenter implements GenPresenter {
     private MeInfoView view;
     private UserInfoModel model;
     public static int REQUEST_CODE=2;
@@ -47,9 +47,14 @@ public class MeInfoPresenter {
         EventBus.getDefault().register(this);
         initView();
     }
+    @Override
     public void initView(){
         view.setView();
         view.setOnClickListener();
+        view.showInfo(GlobalInfos.getUserInfo());
+    }
+    @Override
+    public void refreshView() {
         view.showInfo(GlobalInfos.getUserInfo());
     }
 
@@ -91,8 +96,9 @@ public class MeInfoPresenter {
                             @Override
                             public void done(Exception data) {
                                 if (data == null) {
-                                    view.showMsg(R.string.age_success);
+                                    view.showMsg(R.string.sex_success);
                                     view.getUserSex().setText(text.toString());
+                                    GlobalInfos.getUserInfo().setUserSex(text.toString());
                                 }else{view.showMsg(R.string.set_fail);}
                             }
                         });
@@ -119,6 +125,7 @@ public class MeInfoPresenter {
                                     if (data == null) {
                                         view.showMsg(R.string.nickname_success);
                                         view.getUserName().setText(input.toString());
+                                        GlobalInfos.getUserInfo().setUserName(input.toString());
                                     }else{view.showMsg(R.string.set_fail);}
                                 }
                             });
@@ -146,6 +153,7 @@ public class MeInfoPresenter {
                                     if (data == null) {
                                         view.showMsg(R.string.occuption_success);
                                         view.getUserCareer().setText(input.toString());
+                                        GlobalInfos.getUserInfo().setUserCareer(input.toString());
                                     } else {
                                         view.showMsg(R.string.set_fail);
                                     }
@@ -175,6 +183,7 @@ public class MeInfoPresenter {
                                     if (data == null) {
                                         view.showMsg(R.string.age_success);
                                         view.getUserAge().setText(input.toString());
+                                        GlobalInfos.getUserInfo().setUserAge(input.toString());
                                     } else {
                                         view.showMsg(R.string.set_fail);
                                     }
@@ -229,6 +238,7 @@ public class MeInfoPresenter {
     public void setImg(final Uri uri){
 
         if(AVUser.getCurrentUser()!=null){
+            view.showMsg(R.string.uploading_avatar);
         File imgFile = new File(uri.getPath());
         String name= AVUser.getCurrentUser().getMobilePhoneNumber() + "_" +"Avatar" +"_" + System.currentTimeMillis();
         try{
@@ -245,6 +255,7 @@ public class MeInfoPresenter {
                                 if(e==null){
                                     ImageLoader.getInstance().displayImage("file://"+uri.getPath(),view.getUserAvatar(),GlobalInfos.getDisplayImageOptions());
                                     view.showMsg(R.string.photo_success);
+                                    GlobalInfos.getUserInfo().setUserUrl("file://"+uri.getPath());
                                 }
                                 else view.showMsg(R.string.set_fail);
                             }

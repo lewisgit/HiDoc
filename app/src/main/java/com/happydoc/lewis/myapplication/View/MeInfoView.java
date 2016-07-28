@@ -54,13 +54,14 @@ public class MeInfoView extends FragmentView {
         editCareer.setOnClickListener(listener);
     }
     public void showInfo(UserInfo info){
-        userAge.setText(info.getUserAge());
-        userCareer.setText(info.getUserCareer());
-        userPhone.setText(info.getPhoneNum());
-        userSex.setText(info.getUserSex());
-        userName.setText(info.getUserName());
-        ImageLoader.getInstance().displayImage(info.getUserUrl(),userAvatar, GlobalInfos.getDisplayImageOptions());
-
+        if(info!=null) {
+            userAge.setText(info.getUserAge());
+            userCareer.setText(info.getUserCareer());
+            userPhone.setText(info.getPhoneNum());
+            userSex.setText(info.getUserSex());
+            userName.setText(info.getUserName());
+            ImageLoader.getInstance().displayImage(info.getUserUrl(), userAvatar, GlobalInfos.getDisplayImageOptions());
+        }
     }
 
     public TextView getUserAge() {

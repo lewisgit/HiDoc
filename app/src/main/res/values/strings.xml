@@ -84,10 +84,16 @@
     <string name="set_fail">设置失败</string>
     <!--设置-->
     <string name="clear_storage">清除缓存</string>
+    <string name="clear_success">清除缓存成功</string>
     <string name="notification">消息提醒</string>
     <string name="update">检测更新</string>
     <string name="aboutus">关于我们</string>
-
+    <string name="setnotif_in_set">请在系统设置中修改应用消息提示</string>
+    <string name="company_dsp">copyright @ 四川华西医院附属健康医疗公司</string>
+    <string name="app_dsp">快乐医生客户端 v1.0</string>
+    <string name="contact">联系电话：15008433903</string>
+    <string name="confirm">确定</string>
+    <string name="latest_ver">已是最新版本</string>
     <!--聊天-->
     <string name="title_activity_main">聊天</string>
     <!--评价-->
@@ -163,6 +169,7 @@
     <string name="send_circle">圈子发送</string>
 
     <string name="conv_end">会话已结束，请续费后继续咨询！</string>
+    <string name="query_conv">正在查询会话，请稍后</string>
     <string name="chat_now">立即咨询</string>
     <string name="rem_30">咨询剩余时间不足30分钟，请及时充值！</string>
     <string name="rem_5">咨询剩余时间不足5分钟，请及时充值！</string>
@@ -238,4 +245,12 @@
     <string name="search">搜索</string>
     <string name="no_search_reasult">没有搜索到医生</string>
 
+    <!---->
+    <string name="double_click_quit">双击返回退出</string>
+
+    <!---->
+    <string name="init_consult_success">初始化咨询系统成功</string>
+
+    <!---->
+    <string name="uploading_avatar">头像上传中</string>
 </resources>
