@@ -11,6 +11,7 @@ import com.avos.avoscloud.im.v2.AVIMException;
 import com.avos.avoscloud.im.v2.callback.AVIMClientCallback;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.utils.ThirdPartUserUtils;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.Model.MainModel;
 import com.happydoc.lewis.myapplication.Presenter.MainPresenter;
 import com.happydoc.lewis.myapplication.View.MainActivityView;
@@ -18,6 +19,8 @@ import com.happydoc.lewis.myapplication.account.CustomUserProvider;
 import com.happydoc.lewis.myapplication.event.Event;
 import com.happydoc.lewis.myapplication.event.MainActivityEventBus;
 import com.happydoc.lewis.myapplication.event.RefreshEvent;
+
+import java.io.ObjectStreamException;
 
 import de.greenrobot.event.EventBus;
 
@@ -70,6 +73,10 @@ public void onBackPressed() {
     long currentTime = System.currentTimeMillis();
     if (currentTime - lastBackTime < BACK_INTERVAL) {
         EventBus.clearCaches();//try to solve the Presenter not recycled problem
+//        for(Object o:GlobalInfos.getRegisterObj()){
+//            EventBus.getDefault().unregister(o);
+//        }
+//        GlobalInfos.clearListRegObj();
         super.onBackPressed();
     } else {
         Toast.makeText(getApplicationContext(),getString(R.string.double_click_quit),Toast.LENGTH_SHORT).show();
@@ -82,4 +89,14 @@ public void onBackPressed() {
         super.onResume();
         MainActivityEventBus.getEventBus().post(new RefreshEvent());
     }
+
+/*    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        for(Object o:GlobalInfos.getRegisterObj()){
+            EventBus.getDefault().unregister(o);
+        }
+        GlobalInfos.clearListRegObj();
+    }*/
+
 }

@@ -45,6 +45,7 @@ public class MeInfoPresenter implements GenPresenter {
         this.view=view;
         this.model=model;
         EventBus.getDefault().register(this);
+        GlobalInfos.addListRegObj(this);
         initView();
     }
     @Override

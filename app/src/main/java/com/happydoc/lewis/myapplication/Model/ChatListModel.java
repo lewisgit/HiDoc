@@ -61,6 +61,7 @@ public class ChatListModel {
             public void done(Object o, AVException e) {
                 if (e == null) {
                     BigDecimal remTime_d=(BigDecimal)o;
+                    if(remTime_d!=null){
                     long remTime=remTime_d.longValue();
                     if (remTime > 0) {
                         callBack.done(null);
@@ -69,9 +70,12 @@ public class ChatListModel {
                     else{
                         callBack.done(new Exception());
                        // Toast.makeText(getContext(),getContext().getString(com.avoscloud.leanchatlib.R.string.conv_end),Toast.LENGTH_SHORT).show();
+                    }}else {
+                        callBack.done(new Exception());
                     }}
                 else
                 {
+                    callBack.done(new Exception());
                    e.printStackTrace();
                 }
             }

@@ -13,6 +13,7 @@ import com.happydoc.lewis.myapplication.CircleSendActivity;
 import com.happydoc.lewis.myapplication.LoginActivity;
 import com.happydoc.lewis.myapplication.MainActivity;
 import com.happydoc.lewis.myapplication.Model.MainModel;
+import com.happydoc.lewis.myapplication.MyChatActivity;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.MainActivityView;
 import com.happydoc.lewis.myapplication.event.ClickConversationEvent;
@@ -218,7 +219,7 @@ public class MainPresenter {
     }
   //  @Subscribe
     public void onEvent(ClickConversationEvent event){
-        Intent intent = new Intent(view.activity, AVChatActivity.class);
+        Intent intent = new Intent(view.activity, MyChatActivity.class);
         intent.putExtra(Constants.CONVERSATION_ID, event.getConvId());
         view.activity.startActivity(intent);
     }

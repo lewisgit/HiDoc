@@ -14,6 +14,7 @@ import com.avoscloud.leanchatlib.event.ConversationItemClickEvent;
 import com.avoscloud.leanchatlib.model.Room;
 import com.avoscloud.leanchatlib.utils.Constants;
 import com.avoscloud.leanchatlib.utils.ConversationManager;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.Model.ChatListModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.ChatListView;
@@ -42,6 +43,7 @@ public class ChatListPresenter implements  GenPresenter{
         this.model=model;
         initView();
         EventBus.getDefault().register(this);
+        GlobalInfos.addListRegObj(this);
     }
 
     @Override

@@ -9,12 +9,15 @@ import com.avos.avoscloud.AVOSCloud;
 import com.avoscloud.leanchatlib.controller.ChatManager;
 import com.avoscloud.leanchatlib.utils.ThirdPartUserUtils;
 import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
+import com.happydoc.lewis.myapplication.event.Event;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 import java.io.File;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by Lewis on 2016/7/11.
@@ -38,6 +41,7 @@ public class App extends Application {
                 .showImageForEmptyUri(R.mipmap.my_doctor).showImageOnFail(R.mipmap.my_doctor).cacheInMemory(true).cacheOnDisk(true).build());
         //
         mContext = getApplicationContext();
+        //EventBus.getDefault().register();
         //LeakCanary.install(this);
         //QPManager.getInstance(getApplicationContext()).initRecord();
 

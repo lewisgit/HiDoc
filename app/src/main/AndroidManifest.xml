@@ -40,10 +40,18 @@
         <meta-data
             android:name="com.happydoc.lewis.myapplication.circle.MyGlideModule"
             android:value="GlideModule" />
-        <activity android:name=".CircleSendActivity" android:label="@string/app_name" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".CircleSendActivity" android:label="@string/app_name" android:theme="@style/myAppTheme"></activity>
 
         <activity android:name="com.avoscloud.leanchatlib.activity.ImageBrowserActivity" android:label="image_browser" android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".MyChatActivity" android:theme="@style/myAppTheme" android:label="@string/app_name">
 
+        </activity>
+        <receiver android:name=".utils.NotificationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.avoscloud.chat.intent.client_notification" />
+            </intent-filter>
+        </receiver>
+        <activity android:name=".CommentActivity" android:theme="@style/myAppTheme" android:label="@string/app_name"></activity>
         <activity
             android:name="com.yalantis.ucrop.UCropActivity"
             android:screenOrientation="portrait"

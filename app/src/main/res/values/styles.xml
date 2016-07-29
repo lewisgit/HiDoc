@@ -107,7 +107,6 @@
         <item name="colorPrimary">@color/doc_blue</item>
         <item name="colorPrimaryDark">@color/doc_blue</item>
         <item name="colorAccent">@color/doc_blue</item>
-        <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:editTextStyle">@style/EditText</item>
     </style>
 </resources>

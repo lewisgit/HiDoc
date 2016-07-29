@@ -122,7 +122,7 @@ public class ChatFragment extends android.support.v4.app.Fragment {
 
   @Override
   public void onPause() {
-    super.onResume();
+    super.onPause();
     if (null != imConversation) {
       NotificationUtils.removeTag(imConversation.getConversationId());
     }
@@ -293,6 +293,7 @@ public class ChatFragment extends android.support.v4.app.Fragment {
   }
 
   protected void toast(String str) {
+    if(getActivity()!=null)
     Toast.makeText(getActivity(), str, Toast.LENGTH_SHORT).show();
   }
 

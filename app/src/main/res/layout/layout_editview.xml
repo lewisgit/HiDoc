@@ -15,6 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@null"
         android:layout_weight="1"
+        android:textColor="@color/chat_base_color_text_black"
         android:hint="说点什么..."
         />
     <ImageView

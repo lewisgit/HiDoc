@@ -179,7 +179,14 @@
     <string name="fee_not_set">该医生未设置其咨询费用</string>
     <string name="send_success">发送成功</string>
     <string name="sending">正在发送，请稍后&#8230;</string>
-
+    <string name="rem">剩余</string>
+    <string name="minute">分钟</string>
+    <string name="comment_unaval">暂时不能进行评论</string>
+    <string name="empty_comment">评价不能为空</string>
+    <string name="comment">评价</string>
+    <string name="day">天</string>
+    <string name="hour">小时</string>
+    <string name="wait_conv">等待支付结果确认中，请稍后重试</string>
     <!--Login Phase-->
     <string name="invalid_user">用户不合法</string>
     <string name="not_phone_verify">未验证手机号码</string>
@@ -253,4 +260,7 @@
 
     <!---->
     <string name="uploading_avatar">头像上传中</string>
+
+    <string name="comment_doc">填写评价</string>
+
 </resources>

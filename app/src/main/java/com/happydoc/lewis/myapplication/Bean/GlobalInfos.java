@@ -18,6 +18,7 @@ public class GlobalInfos {
     static private DoctorInfo curDocInfo;
     static private List<FragmentInfo> backStack;
     static private HashMap<String,FragmentInfo> fragmentList=new HashMap<>();
+    static private List<Object> registerObj=new ArrayList<>();
     public static void setDisplayImageOptions(DisplayImageOptions displayImageOptions) {
         GlobalInfos.displayImageOptions = displayImageOptions;
     }
@@ -52,6 +53,7 @@ public class GlobalInfos {
         return backStack;
     }
     public static void popBackStack(){
+        if(backStack.size()>0)
         backStack.remove(backStack.size()-1);
     }
 
@@ -66,5 +68,15 @@ public class GlobalInfos {
 
     public static HashMap<String, FragmentInfo> getFragmentList() {
         return fragmentList;
+    }
+    public static void addListRegObj(Object o){
+        registerObj.add(o);
+    }
+
+    public static List<Object> getRegisterObj() {
+        return registerObj;
+    }
+    public static void clearListRegObj(){
+        registerObj.clear();
     }
 }

@@ -18,6 +18,7 @@ import com.happydoc.lewis.myapplication.Bean.ConsultInfo;
 import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.Bean.PayInfo;
 import com.happydoc.lewis.myapplication.Model.DocPageModel;
+import com.happydoc.lewis.myapplication.MyChatActivity;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.FragmentDocPageView;
 import com.happydoc.lewis.myapplication.account.DoctorInfo;
@@ -49,6 +50,7 @@ public class DocPagePresenter implements GenPresenter {
         this.view=view;
         this.model=model;
         EventBus.getDefault().register(this);
+        GlobalInfos.addListRegObj(this);
         view.setView();
         initView();
         //docPageReady=false;
@@ -288,7 +290,7 @@ public class DocPagePresenter implements GenPresenter {
     };
 
     public void startConv(){
-        Intent intent = new Intent(view.fragment.getActivity(), AVChatActivity.class);
+        Intent intent = new Intent(view.fragment.getActivity(), MyChatActivity.class);
         //Toast.makeText(this, usrId.getText(), Toast.LENGTH_SHORT).show();
         //Constants.currentDocID = doctor.getObjectId();
         //Constants.serviceType=type;
