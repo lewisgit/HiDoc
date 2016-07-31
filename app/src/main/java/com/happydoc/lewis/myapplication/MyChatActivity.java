@@ -238,6 +238,7 @@ public class MyChatActivity extends AVBaseActivity {
             if(remTime<=0){
                 goBack(null);
                 showMsg(R.string.conv_end);
+                showMsg(R.string.conv_end_wait);
             }
             if(remTime>0 && remTime<5) {
                 showMsg(R.string.rem_5);

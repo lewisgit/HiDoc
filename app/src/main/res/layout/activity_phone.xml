@@ -50,6 +50,7 @@
         android:layout_weight="0.5"
         >
         <EditText
+            android:textCursorDrawable="@color/chat_base_color_text_black"
             android:id="@+id/input_verifiedcode"
             android:layout_width="0dp"
             android:layout_height="match_parent"

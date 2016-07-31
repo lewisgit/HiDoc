@@ -72,6 +72,7 @@
                 />
 
             <EditText
+                android:textCursorDrawable="@color/chat_base_color_text_black"
                 android:id="@+id/register_username"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -111,6 +112,7 @@
                 />
 
             <EditText
+                android:textCursorDrawable="@color/chat_base_color_text_black"
                 android:id="@+id/register_pwd"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"

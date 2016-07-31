@@ -19,6 +19,7 @@ public class GlobalInfos {
     static private List<FragmentInfo> backStack;
     static private HashMap<String,FragmentInfo> fragmentList=new HashMap<>();
     static private List<Object> registerObj=new ArrayList<>();
+    static private List<Object> chatListView=new ArrayList<>();
     public static void setDisplayImageOptions(DisplayImageOptions displayImageOptions) {
         GlobalInfos.displayImageOptions = displayImageOptions;
     }
@@ -78,5 +79,15 @@ public class GlobalInfos {
     }
     public static void clearListRegObj(){
         registerObj.clear();
+    }
+    public static void addChatListView(Object o){
+        chatListView.add(o);
+    }
+
+    public static List<Object> getChatListView() {
+        return chatListView;
+    }
+    public static void clearChatListView(){
+        chatListView.clear();
     }
 }

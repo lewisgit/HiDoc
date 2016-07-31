@@ -10,6 +10,7 @@ import com.avoscloud.leanchatlib.adapter.CommonListAdapter;
 import com.avoscloud.leanchatlib.model.Room;
 import com.avoscloud.leanchatlib.view.DividerItemDecoration;
 import com.avoscloud.leanchatlib.viewholder.ConversationItemHolder;
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.R;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class ChatListView extends FragmentView{
         chatListView.setLayoutManager(layoutManager);
         chatListView.addItemDecoration(new DividerItemDecoration(fragment.getActivity()));
         chatListAdapter=new CommonListAdapter<Room>(ConversationItemHolder.class);
+        GlobalInfos.addChatListView(chatListView);
         chatListView.setAdapter(chatListAdapter);
     }
     public void updateChatList(List<Room> roomList){

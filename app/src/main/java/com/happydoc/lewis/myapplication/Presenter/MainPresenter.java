@@ -59,6 +59,7 @@ public class MainPresenter {
         view.setView();
         view.setEventBus();
         MainActivityEventBus.getEventBus().register(this);
+        GlobalInfos.addListRegObj(this);
         view.setBtnOnClickListener();
         view.setFragmentRegionId(R.id.fragment_region);
         setFragmentInfoList();

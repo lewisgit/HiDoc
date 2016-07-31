@@ -168,7 +168,10 @@
     <string name="female">女</string>
     <string name="send_circle">圈子发送</string>
 
+    <string name="logging_wait">登录中，请稍后</string>
+
     <string name="conv_end">会话已结束，请续费后继续咨询！</string>
+    <string name="conv_end_wait">若您已续费，请等待支付结果确认</string>
     <string name="query_conv">正在查询会话，请稍后</string>
     <string name="chat_now">立即咨询</string>
     <string name="rem_30">咨询剩余时间不足30分钟，请及时充值！</string>

@@ -2,7 +2,9 @@ package com.happydoc.lewis.myapplication;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVUser;
@@ -90,13 +92,18 @@ public void onBackPressed() {
         MainActivityEventBus.getEventBus().post(new RefreshEvent());
     }
 
-/*    @Override
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         for(Object o:GlobalInfos.getRegisterObj()){
             EventBus.getDefault().unregister(o);
+            MainActivityEventBus.getEventBus().unregister(o);
         }
+/*        for(Object o:GlobalInfos.getChatListView()){
+           // EventBus.getDefault().unregister(o);
+            ((RecyclerView)o).setAdapter(null);
+        }*/
         GlobalInfos.clearListRegObj();
-    }*/
+    }
 
 }

@@ -60,6 +60,7 @@ public class LoginPresenter {
                                 if(e==null)
                                 {
                                     loginVerify(avUser);
+                                    loginView.showMsg(R.string.logging_wait);
                                 }else{
                                     processLeanCloudErrCode(e.getCode());
                                 }

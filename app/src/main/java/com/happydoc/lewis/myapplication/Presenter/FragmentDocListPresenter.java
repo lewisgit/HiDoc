@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import com.happydoc.lewis.myapplication.Bean.GlobalInfos;
 import com.happydoc.lewis.myapplication.Model.FragmentDocListModel;
 import com.happydoc.lewis.myapplication.R;
 import com.happydoc.lewis.myapplication.View.FragmentDocListView;
@@ -29,6 +30,7 @@ public class FragmentDocListPresenter {
         this.view=view;
         this.model=model;
         MainActivityEventBus.getEventBus().register(this);
+        GlobalInfos.addListRegObj(this);
         initialize();
     }
     public void initialize(){
